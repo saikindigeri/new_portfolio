@@ -222,7 +222,7 @@ app.delete('/api/cart/:id', (req, res) => {
 
 
 
-
+/*
 
 app.post('/api/orders', (req, res) => {
     const { product_id, quantity } = req.body;
@@ -265,7 +265,7 @@ app.post('/api/orders', (req, res) => {
     });
 });
 
-
+*/
 
 /*
 app.post('/api/orders', (req, res) => {
@@ -319,6 +319,31 @@ app.get('/api/orders', (req, res) => {
 });
 
 */
+
+
+
+app.post('/api/orders', authenticate, (req, res) => {
+    const { product_id, quantity } = req.body;
+    const userId = req.userId;
+
+    if (!product_id || !quantity) return res.status(400).send('Product ID and quantity required');
+
+    // Example SQL query to fetch product details
+    db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
+        if (err) return res.status(500).send(err.message);
+        if (!product) return res.status(404).send('Product not found');
+
+        // Insert the order into the orders table
+        db.run(
+            'INSERT INTO orders (user_id, product_id, title, price, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?)',
+            [userId, product_id, product.title, product.price, quantity, product.price * quantity],
+            function (err) {
+                if (err) return res.status(500).send(err.message);
+                res.status(201).send({ id: this.lastID, message: 'Order placed successfully' });
+            }
+        );
+    });
+});
 
 // Route to get orders for a user
 app.get('/api/orders', (req, res) => {

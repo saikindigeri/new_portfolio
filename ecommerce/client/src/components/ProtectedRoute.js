@@ -6,7 +6,7 @@ import { AppContext } from '../context/AppContext';
 
 const ProtectedRoute = ({ element, ...rest }) => {
  
-    const isAuthenticated = Cookies.get('token');
+    const isAuthenticated = localStorage.getItem('token');
 
   
   if (!isAuthenticated) {

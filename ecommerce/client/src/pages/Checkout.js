@@ -141,7 +141,7 @@ const Checkout = () => {
         </div>
 
         <div className="mt-4">
-          <h3>Total Amount: ${totalAmount.toFixed(2)}</h3>
+          <h3>Total Amount: Rs. {totalAmount.toFixed(2)}</h3>
         </div>
 
         <button

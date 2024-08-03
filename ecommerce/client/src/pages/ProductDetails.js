@@ -95,7 +95,7 @@ const ProductDetails = () => {
             )}
           </button>
           {showRes && (
-            <div className="alert alert-success mt-3 fade-out" role="alert">
+            <div className="alert alert-info mt-3 fade-out" role="alert">
               {res}
             </div>
           )}

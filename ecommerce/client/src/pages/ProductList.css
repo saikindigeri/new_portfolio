@@ -1,0 +1,10 @@
+.card{
+    background-color: rgb(159, 122, 193);
+}
+
+
+.card-text{
+    font-weight: bold;
+    color: darkgreen;
+    font-family: Arial, Helvetica, sans-serif;
+}

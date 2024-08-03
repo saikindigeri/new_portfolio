@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Header from '../components/Header';
+import './ProductList.css'
 
 const ProductsList = () => {
     const [products, setProducts] = useState([]);

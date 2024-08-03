@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import './Login.css'; 
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,17 @@ const Navigate=useNavigate()
     e.preventDefault();
     login(credentials);
   };
+
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem('token');
+
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
 
   const handleRegister=()=>{
     Navigate('/register')

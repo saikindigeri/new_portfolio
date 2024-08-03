@@ -15,7 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    Cookies.remove('userToken');
+   localStorage.removeItem('token')
     navigate('/login');
   };
 
