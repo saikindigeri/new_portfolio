@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminPanel.css'; 
 import Header from '../components/Header';
 
-const API_URL = 'https://ecommerce-server-2-o3d7.onrender.com/api/products'; 
+const API_URL = 'https://claw-serverr.onrender.com/api/products'; 
 
 const AdminPanel = () => {
     const [name, setName] = useState('');

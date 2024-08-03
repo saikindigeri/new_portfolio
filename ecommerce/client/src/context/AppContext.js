@@ -141,7 +141,7 @@ import { useNavigate } from 'react-router-dom';
 const AppContext = createContext();
 
 // API base URL
-const API_URL = 'https://ecommerce-server-2-o3d7.onrender.com/api';
+const API_URL = 'https://claw-serverr.onrender.com/api';
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);

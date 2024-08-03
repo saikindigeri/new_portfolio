@@ -12,7 +12,7 @@ const ProductsList = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://ecommerce-server-2-o3d7.onrender.com/api/products');
+                const response = await axios.get('https://claw-serverr.onrender.com/api/products');
                 setProducts(response.data);
             } catch (error) {
                 console.error('Error fetching products:', error);

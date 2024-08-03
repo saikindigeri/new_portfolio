@@ -29,7 +29,7 @@ const seedProducts = () => {
           "description": "Transform your home into a smart home with our voice-controlled smart assistant. This device integrates with your home automation system, allowing you to control lights, thermostats, and other smart devices using simple voice commands. The assistant also provides real-time information, such as weather updates, news, and traffic alerts, making it a valuable addition to your daily routine. Its sleek design and high-quality speaker ensure that it blends seamlessly into any room while delivering clear and accurate responses.",
           "price": 99.99,
           "stock": 220,
-          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722685738/dd7e8a90-aa13-488d-a2fe-0e2bd4dc8f3e_d7dpkn.webp"
+          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722689578/ultimate-guide-to-the-best-smart-home-assistant-for-him-1709176982-1280x720_mdgbyx.jpg"
         },
         {
           "id": 12,
@@ -40,8 +40,15 @@ const seedProducts = () => {
           "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722686104/electric-toothbrush_ckezlz.jpg"
         },
   
-
-
+        {
+            "id": 41,
+            "name": "Apple Iphone",
+            "description": "The iPhone joined several competing products in the smartphone market, and critics and fans alike noted that it offered few truly original features. The main appeal of the iPhone was its incorporation of intuitive software and a simplified appealing interface, as well as the capacity to accommodate new user-selected software. More than 100 million applications (or “apps”) were downloaded in the first 60 days after Apple opened its online iPhone App Store in 2008, and by January 2010 more than three billion apps had been downloaded from the store.",
+            "price": 782000,
+            "stock": 300,
+            "image_url": " https://res.cloudinary.com/dyjmh036b/image/upload/v1722684774/31MZVlSW1KL._SY445_SX342_QL70_FMwebp__abcdry.webp"
+          },
+       
 
       
         {
@@ -50,7 +57,7 @@ const seedProducts = () => {
           "description": "Prepare delicious meals quickly with our versatile Instant Pot. This multi-function cooker combines the capabilities of a pressure cooker, slow cooker, rice cooker, and more in one compact appliance. The user-friendly interface and programmable settings make it easy to cook a variety of dishes, from soups and stews to grains and yogurt. With its energy-efficient design and fast cooking times, the Instant Pot is perfect for busy families and home cooks looking for convenience and versatility.",
           "price": 99.99,
           "stock": 55,
-          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722686270/41XXUC41gpL._SX300_SY300_QL70_FMwebp__xq5lhj.webp"
+          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722689668/shopping_ywmj4z.webp"
         },
               {
           "id": 18,
@@ -158,7 +165,7 @@ const seedProducts = () => {
           "description": "Boil water quickly and efficiently with our electric kettle. Featuring a rapid boiling function, it heats up water in just minutes, making it perfect for tea, coffee, and instant meals. The variable temperature control allows you to select the ideal temperature for different beverages, while the automatic shut-off function ensures safety by preventing overheating. The kettle's sleek design and ergonomic handle make it easy to use, and its cordless operation provides convenient pouring without tangled cords.",
           "price": 49.99,
           "stock": 200,
-          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722686270/41XXUC41gpL._SX300_SY300_QL70_FMwebp__xq5lhj.webp"
+          "image_url": "https://res.cloudinary.com/dyjmh036b/image/upload/v1722689754/31vZwcN6ceS._SY300_SX300_QL70_FMwebp__zn2igx.webp"
         },
   ]
         

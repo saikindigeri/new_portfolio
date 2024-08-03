@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import Cookies from 'js-cookie';
 import { Navigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext'; y
+import { AppContext } from '../context/AppContext'; 
 
 const ProtectedRoute = ({ element, ...rest }) => {
  
