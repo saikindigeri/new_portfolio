@@ -1,0 +1,79 @@
+
+header {
+    background-color: #343a40; 
+  }
+  
+  .navbar-nav .nav-link {
+    color: #f8f9fa; 
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px
+  }
+  
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: #000; 
+    background-color: lightblue; 
+    border-radius: 0.25rem; 
+  }
+  
+  .navbar-brand {
+    color: #ffffff; 
+    font-weight: bold;
+    font-size: 1.75rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-brand:hover {
+    color: #f8f9fa; 
+  }
+
+  .nav-item{
+    margin-right: 20px;
+  }
+  
+  .btn-outline-light {
+    color: #ffffff; 
+    border-color: #ffffff; 
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .btn-outline-light:hover {
+    color: #343a40; 
+    background-color: #ffffff; 
+  }
+  
+  .navbar-toggler {
+    border-color: #ffffff; 
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;base64,...');
+  }
+  
+
+
+.header .navbar {
+    padding: 10px;
+  }
+  
+  .header .navbar .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .header .navbar .nav-link {
+    color: #555;
+  }
+  
+  .header .navbar .nav-link:hover {
+    color: #000;
+  }
+  
+  .header .navbar .badge {
+    background-color: #dc3545; 
+    color: white; 
+    border-radius: 50%;
+  }
+  
+  .header .navbar .fa-shopping-cart {
+    font-size: 24px; 
+  }
+  
