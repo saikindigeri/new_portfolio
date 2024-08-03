@@ -210,7 +210,7 @@ const logout = () => {
 
   const postOrder = async (productId, quantity) => {
     try {
-      const response = await axios.post(`${API_URL}/orders`, { product_id: productId, quantity }, {
+      const response = await axios.post(`${API_URL}/cart`, { product_id: productId, quantity }, {
         headers: { 'Authorization': `Bearer ${user}` },
       });
       setRes(response.data.message);
@@ -246,7 +246,7 @@ const logout = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${API_URL}/orders`, {
+      const response = await axios.get(`${API_URL}/cart`, {
         headers: { 'Authorization': `Bearer ${user}` },
       });
       setOrderItems(response.data);
