@@ -230,19 +230,20 @@ export const AppProvider = ({ children }) => {
   };
 */
   const postOrder = async (order) => {
+
+    const {user_id,product_id,title,price,total_amount,quantity,image_url}=order
     try {
-      const response = await axios.post(`${API_URL}/orders`, {order}, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
+      const response = await axios.post(`${API_URL}/orders`, {user_id,product_id,title,quantity,image_url,total_amount,price}, {
+   
       });
   
       if (response.status === 200) {
         console.log('Order placed successfully:', response.data);
       setRes(response.data.message)
+      navigate('/checkout'
+      )
       } else {
-        console.error('Failed to place order:', response.statusText);
+        
         throw new Error(response.statusText);
       }
     } catch (error) {

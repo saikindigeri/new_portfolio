@@ -383,7 +383,7 @@ app.get('/api/orders', (req, res) => {
   // Post a new order
 
   app.get('/api/orders', (req, res) => {
-    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
+    const token = req.headers['Authorization']?.split(' ')[1]; // Extract token
   
     if (!token) {
       return res.status(401).json({ message: 'No token provided' });

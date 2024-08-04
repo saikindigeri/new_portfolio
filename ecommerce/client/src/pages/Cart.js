@@ -24,8 +24,8 @@ const Cart = () => {
         image_url: item.image_url
       };
       await postOrder(order);
-      fetchCartItems(); // Refresh cart items after booking
-      fetchOrders(); // Optionally refresh orders list
+     
+    
     } catch (error) {
       console.error('Failed to place order:', error);
     }
