@@ -158,6 +158,7 @@ export const AppProvider = ({ children }) => {
   const [orderItems, setOrderItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [res, setRes] = useState('');
+  const [error,setError]=useState('')
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -168,14 +169,16 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (credentials) => {
+  const login = async (username,password) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, credentials);
+      const response = await axios.post(`${API_URL}/auth/login`, username,password);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('client', credentials.username);
+        localStorage.setItem('client', username);
         setUser(response.data.token);
         setMessage('Login successful!');
+        setError(response.data.message)
+        
         navigate('/');
       } else {
         setMessage('Invalid credentials');
@@ -325,7 +328,7 @@ const fetchOrders = async () => {
       removeFromCart,
       fetchCartItems,
       clearCart,
-    
+    error,
       totalAmount,
       res
     }}>

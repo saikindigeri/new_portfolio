@@ -4,59 +4,65 @@ import './Register.css';
 import {  useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const { register, message } = useAppContext();
-  const [userData, setUserData] = useState({ username: '', password: '' });
+  const { register, error } = useAppContext();
+  const [username, setUsername] = useState('');
 
-  const handleChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
-  };
+  const [password, setPassword] = useState('');
 
 
-  const Navigate=useNavigate()
-  const handleSubmit = (e) => {
+
+
+  const handleRegister = (e) => {
     e.preventDefault();
-    register(userData);
+    register(username,password);
   };
-const handleLog=()=>{
-  Navigate('/login')
-}
+
   return (
-    <div className="register-container">
-      <h1 className="text-center">Register</h1>
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={userData.username}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+          <div className="card shadow-lg border-0 rounded-lg my-5 animate__animated animate__fadeIn animate__delay-1s">
+            <div className="card-header bg-success text-white text-center py-4">
+              <h3 className="fw-light my-2">Register</h3>
+            </div>
+            <div className="card-body">
+              <form onSubmit={handleRegister}>
+                <div className="form-floating mb-3">
+                  <input
+                    type="text"
+                    id="username"
+                    className="form-control"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    placeholder="Username"
+                  />
+                  <label htmlFor="username">Username</label>
+                </div>
+              
+                <div className="form-floating mb-3">
+                  <input
+                    type="password"
+                    id="password"
+                    className="form-control"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="Password"
+                  />
+                  <label htmlFor="password">Password</label>
+                </div>
+             
+                {error && <div className="alert alert-danger mt-3">{error}</div>}
+                <button type="submit" className="btn btn-success w-100 py-2 mt-3">Register</button>
+                <div className="text-center mt-4">
+                  <p className="mb-0">Already have an account? <a href="/login" className="text-success">Login here</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-      
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={userData.password}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Register</button>
-        <p onClick={handleLog}>Already had an account? Log In!</p>
-      </form>
-      {message && (
-        <div className={`alert mt-3 ${message.includes('failed') ? 'alert-danger' : 'alert-success'}`} role="alert">
-          {message}
-        </div>
-      )}
+      </div>
     </div>
   );
 };
