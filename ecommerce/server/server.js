@@ -380,11 +380,16 @@ app.get('/api/orders', (req, res) => {
   
   // Post a new order
   app.post('/api/orders', (req, res) => {
-    const { order } = req.body; // Extract the `order` object from the request body
 
- 
+const {order}=req.body
+    const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
+    
 
-  const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
+
+    const sql = `INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  
+    
+    
     db.run(sql, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
       if (err) {
         return res.status(500).json({ message: 'Failed to create order', error: err.message });
