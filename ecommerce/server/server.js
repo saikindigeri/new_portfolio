@@ -22,7 +22,7 @@ app.use(cors());
 const decodeToken = (token) => {
   try {
     // Replace 'your_secret_key' with your actual JWT secret key
-    const decoded = jwt.verify(token, 'your_jwt_secret');
+    const decoded = jwt.verify(token, JWT_SECRET);
     return decoded.user_id; // Assuming the payload contains user_id
   } catch (error) {
     console.error('Token decoding error:', error);
@@ -503,7 +503,7 @@ app.get('/api/orders', (req, res) => {
     try {
       const user_id = decodeToken(token); // Replace with actual decoding logic
       if (!user_id) {
-        return res.status(401).json({ message: 'Invalid token',user:user_id ,token});
+        return res.status(401).json({ message: 'Invalid token',user:user_id ,token,decoded});
       }
 
   
