@@ -11,7 +11,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 6000;
 const DB_PATH = path.resolve(__dirname, 'database.db');
-const JWT_SECRET = 'your_jwt_secret';  
+const JWT_SECRET = 'sasasasasa';  
 app.use(cors());
 
 
@@ -22,7 +22,7 @@ app.use(cors());
 const decodeToken = (token) => {
   try {
     // Replace 'your_secret_key' with your actual JWT secret key
-    const decoded = jwt.verify(token, 'your_jwt_secret');
+    const decoded = jwt.verify(token, 'sasasasasa');
     return decoded.user_id; // Assuming the payload contains user_id
   } catch (error) {
     console.error('Token decoding error:', error);
