@@ -189,10 +189,14 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const register = async (userData) => {
+  const register = async (username,password) => {
     try {
-      await axios.post(`${API_URL}/auth/register`, userData);
-      await login(userData);
+  const response=    await axios.post(`${API_URL}/auth/register`, username,password);
+  if (response.data.status===201){
+    setError(response.data.message)
+  }
+    
+     
     } catch (error) {
       setMessage('Registration failed. Please try again.');
       console.error('Registration error:', error);
