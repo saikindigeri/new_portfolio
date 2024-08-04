@@ -1,4 +1,4 @@
-
+/*
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
@@ -73,6 +73,65 @@ const Cart = () => {
     </div>
     </>
    
+  );
+};
+
+export default Cart;
+*/
+
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../context/AppContext';
+
+const Cart = () => {
+  const { cartItems, postOrder } = useAppContext(); // Ensure you have addToOrders in your context
+  const navigate = useNavigate();
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  const handleBookNow = (item) => {
+    postOrder(item.id,item.quantity); // Add the item to orders
+    // Optionally remove from cart
+    // removeFromCart(item.id);
+  };
+
+  const handleCheckoutAll = () => {
+    navigate('/checkout', { state: { totalAmount } }); // Pass total amount to checkout page
+  };
+
+  // Calculate total amount
+  const calculateTotalAmount = () => {
+    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    setTotalAmount(total);
+  };
+
+  // Call calculateTotalAmount when cartItems change
+  React.useEffect(() => {
+    calculateTotalAmount();
+  }, [cartItems]);
+
+  return (
+    <div>
+      <h1>Your Cart</h1>
+      <ul className="list-group">
+        {cartItems.map((item) => (
+          <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <h5>{item.name}</h5>
+              <p>Price: ${item.price}</p>
+            </div>
+            <button className="btn btn-primary" onClick={() => handleBookNow(item)}>Book Now</button>
+          </li>
+        ))}
+      </ul>
+      <button
+        className="btn btn-success mt-3"
+        onClick={handleCheckoutAll}
+        disabled={cartItems.length === 0}
+      >
+        Checkout All (${totalAmount})
+      </button>
+    </div>
   );
 };
 

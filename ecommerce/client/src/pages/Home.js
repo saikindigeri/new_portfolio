@@ -14,8 +14,8 @@ const Home = () => {
 
     <>
     <Header/>
-    <div className="container text-center mt-5">
-      <div className="welcome-section">
+    <div className="container text-center ">
+      <div className="welcome-section m-2">
         <h1 className="display-3">Hello, {client ? client : 'Guest'}!</h1>
         <h2 className="display-4">Welcome to Our E-Commerce Platform</h2>
         <p className="lead">Discover the best products and deals just for you!</p>

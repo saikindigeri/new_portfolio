@@ -320,7 +320,7 @@ app.get('/api/orders', (req, res) => {
 
 */
 
-
+/*
 
 app.post('/api/orders', (req, res) => {
     const { product_id, quantity } = req.body;
@@ -366,6 +366,32 @@ app.get('/api/orders', (req, res) => {
     });
 });
 
+*/
+app.get('/api/orders', (req, res) => {
+    const sql = `SELECT * FROM orders`;
+    
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        return res.status(500).json({ message: 'Server error', error: err.message });
+      }
+      res.status(200).json(rows);
+    });
+  });
+  
+  // Post a new order
+  app.post('/api/orders', (req, res) => {
+    const { user_id, title, product_id, price, quantity, total_amount, image_url } = req.body;
+    
+    const sql = `INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    
+    db.run(sql, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
+      if (err) {
+        return res.status(500).json({ message: 'Failed to create order', error: err.message });
+      }
+      res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
+    });
+  });
+  
 
 // Start the server
 app.listen(PORT, () => {
