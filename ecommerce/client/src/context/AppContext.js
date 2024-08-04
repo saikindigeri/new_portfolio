@@ -215,17 +215,16 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const postOrder = async (productId, quantity) => {
+  const postOrder = async (order) => {
     try {
-      const response = await axios.post(`${API_URL}/orders`, { product_id: productId, quantity }, {
-        headers: { 'Authorization': `Bearer ${user}` },
+      const response = await axios.post(`${API_URL}/orders`, { order }, {
+        headers: { 'Authorization': `Bearer ${user}` }, // Include any necessary headers
       });
-      setRes(response.data.message);
-      // Remove item from cart after successful order
-      await removeFromCart(productId);
-      fetchCartItems(); // Refresh cart items
+      setRes(response.data.message); // Handle success message or response
+      fetchOrders(); // Refresh orders if needed
     } catch (error) {
-      setRes('Failed to place order.');
+      setRes('Failed to create order.'); // Handle error
+      console.error('Failed to create order:', error);
     }
   };
 
@@ -265,6 +264,9 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
 
   return (
@@ -281,6 +283,7 @@ export const AppProvider = ({ children }) => {
       addToCart,
       removeFromCart,
       fetchCartItems,
+      clearCart,
     
       totalAmount,
       res

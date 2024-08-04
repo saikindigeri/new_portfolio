@@ -380,10 +380,13 @@ app.get('/api/orders', (req, res) => {
   
   // Post a new order
   app.post('/api/orders', (req, res) => {
-    const { user_id, title, product_id, price, quantity, total_amount, image_url } = req.body;
-    
-    const sql = `INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-    
+    const { order } = req.body; // Extract the `order` object from the request body
+
+  if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
+
+  const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
     db.run(sql, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
       if (err) {
         return res.status(500).json({ message: 'Failed to create order', error: err.message });
