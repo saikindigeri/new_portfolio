@@ -16,23 +16,19 @@ app.use(cors());
 
 
 
- // Import the jsonwebtoken library
-
-// Function to decode the token and extract user_id
 const decodeToken = (token) => {
   try {
-    // Replace 'your_secret_key' with your actual JWT secret key
+
     const decoded = jwt.verify(token, JWT_SECRET);
-    return decoded.user_id; // Assuming the payload contains user_id
+    return decoded.user_id; 
   } catch (error) {
     console.error('Token decoding error:', error);
-    return null; // Return null if token is invalid or expired
-  }
+    return null;
 };
 
 
 
-// Initialize SQLite database
+
 
 
 
@@ -235,7 +231,7 @@ app.post('/api/cart', (req, res) => {
 
 
 
-// localhost:7000/api/cart/:id
+
 app.delete('/api/cart/:id', (req, res) => {
     const { id } = req.params;
     db.run('DELETE FROM cart WHERE id = ?', [id], function (err) {
@@ -247,151 +243,11 @@ app.delete('/api/cart/:id', (req, res) => {
 
 
 
-/*
 
-app.post('/api/orders', (req, res) => {
-    const { product_id, quantity } = req.body;
-    const token = req.headers.authorization?.split(' ')[1];
 
-    if (!token) return res.status(401).send('Token required');
 
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
 
-        const userId = decoded.id;
 
-       
-        db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, cartItem) => {
-            if (err) return res.status(500).send(err.message);
-            if (!cartItem) return res.status(404).send('Product not found in cart');
-
-     
-            db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
-                if (err) return res.status(500).send(err.message);
-                if (!product) return res.status(404).send('Product not found');
-
-                
-                db.run(
-                    'INSERT INTO orders (user_id, product_id, title, price, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?)',
-                    [userId, product_id, product.title, product.price, quantity, product.price * quantity],
-                    function (err) {
-                        if (err) return res.status(500).send(err.message);
-
-                        
-                        db.run('DELETE FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err) => {
-                            if (err) return res.status(500).send(err.message);
-
-                            res.status(201).send({ id: this.lastID, message: 'Order placed successfully' });
-                        });
-                    }
-                );
-            });
-        });
-    });
-});
-
-*/
-
-/*
-app.post('/api/orders', (req, res) => {
-    const { product_id, quantity } = req.body;
-    const token = req.headers.authorization?.split(' ')[1];
-    
-    if (!token) return res.status(401).send('Token required');
-    
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
-        
-        const userId = decoded.id;
-        db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, existingItem) => {
-            if (err) return res.status(500).send(err.message);
-            if (!product) return res.status(404).send('Product not found');
-     
-            db.run(
-                'INSERT INTO orders (user_id, product_id, title, price, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?)',
-                [userId, product_id, product.title, product.price, quantity, product.price * quantity],
-                function (err) {
-                    if (err) return res.status(500).send(err.message);
-                    
-                    res.status(201).send({ id: this.lastID, message: 'Order placed successfully' });
-                }
-            );
-        });
-    });
-});
-*/
-
-// localhost:7000/api/orders/:userId
-/*
-app.get('/api/orders', (req, res) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    
-    if (!token) return res.status(401).send('Token required');
-    
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
-        
-        const userId = decoded.id;
-        db.all(
-            'SELECT o.id, o.user_id, o.product_id, p.name AS title, o.price, o.quantity, o.total_amount FROM orders o JOIN products p ON o.product_id = p.id WHERE o.user_id = ?',
-            [userId],
-            (err, rows) => {
-                if (err) return res.status(500).send(err.message);
-                res.json(rows);
-            }
-        );
-    });
-});
-
-*/
-
-/*
-
-app.post('/api/orders', (req, res) => {
-    const { product_id, quantity } = req.body;
-    const userId = req.userId;
-
-    if (!product_id || !quantity) return res.status(400).send('Product ID and quantity required');
-
-    // Example SQL query to fetch product details
-    db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
-        if (err) return res.status(500).send(err.message);
-        if (!product) return res.status(404).send('Product not found');
-
-        // Insert the order into the orders table
-        db.run(
-            'INSERT INTO orders (user_id, product_id, title, price, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?)',
-            [userId, product_id, product.title, product.price, quantity, product.price * quantity],
-            function (err) {
-                if (err) return res.status(500).send(err.message);
-                res.status(201).send({ id: this.lastID, message: 'Order placed successfully' });
-            }
-        );
-    });
-});
-
-// Route to get orders for a user
-app.get('/api/orders', (req, res) => {
-    const token = req.headers.authorization?.split(' ')[1];
-
-    if (!token) return res.status(401).send('Token required');
-
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
-
-        const userId = decoded.id;
-
-        
-        db.all('SELECT * FROM orders WHERE user_id = ?', [userId], (err, rows) => {
-            if (err) return res.status(500).send(err.message);
-            if (rows.length === 0) return res.status(404).send('No orders found');
-
-            res.status(200).json(rows);
-        });
-    });
-});
-
-*/
  app.get('/api/orders', (req, res) => {
     const sql = `SELECT * FROM orders`;
     
@@ -403,71 +259,7 @@ app.get('/api/orders', (req, res) => {
     });
   });
 
-  // Post a new order
-/*
-  app.get('/api/orders', (req, res) => {
-    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
-    
-    if (!token) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-  
-    console.log('Token received:', token);
-  
-    // Decode the token to get user_id
-    try {
-      const user_id = decodeToken(token); // Replace with actual decoding logic
-      if (!user_id) {
-        return res.status(401).json({ message: 'Invalid token' });
-      }
-  
-      db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
-        if (err) {
-          console.error('Error fetching orders:', err);
-          return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
-        }
-  
-        if (rows.length === 0) {
-          return res.status(404).json({ message: 'No orders found for this user' });
-        }
-  
-        res.status(200).json(rows);
-      });
-    } catch (error) {
-      console.error('Token decoding error:', error);
-      return res.status(401).json({ message: 'Unauthorized', error: error.message });
-    }
-  });
-  
-
-/*
-  app.post('/api/orders', (req, res) => {
-    const { order } = req.body; // Extract the `order` object from the request body
-
-    if (!order) {
-      return res.status(400).json({ message: 'Order data is missing' });
-    }
-  
-    const { user_id, title, product_id, price, quantity, total_amount } = order;
-  
-    if (!user_id || !title || !product_id || !price || !quantity || !total_amount) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-  
-    db.run(`INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [user_id, title, product_id, price, quantity, total_amount, order.image_url || null],
-      function (err) {
-        if (err) {
-          console.error('Failed to create order:', err);
-          return res.status(500).json({ message: 'Failed to create order', error: err.message });
-        }
-        res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
-      }
-    );
-  });
-
-  */
+ 
   app.post('/api/orders', (req, res) => {
     const { user_id, title, product_id, price, quantity, total_amount, image_url } = req.body;
   
@@ -488,45 +280,6 @@ app.get('/api/orders', (req, res) => {
   });
 
 
-/*
-  
-  app.get('/api/orders', (req, res) => {
-    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
-    
-    if (!token) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-  
-    console.log('Token received:', token);
-  
-    // Decode the token to get user_id
-    try {
-      const user_id = decodeToken(token); // Replace with actual decoding logic
-      if (!user_id) {
-        return res.status(401).json({ message: 'Invalid token',user:user_id ,token,decoded});
-      }
-
-  
-      db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
-        if (err) {
-          console.error('Error fetching orders:', err);
-          return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
-        }
-  
-        if (rows.length === 0) {
-          return res.status(404).json({ message: 'No orders found for this user' });
-        }
-  
-        res.status(200).json(rows);
-      });
-    } catch (error) {
-      console.error('Token decoding error:', error);
-      return res.status(401).json({ message: 'Unauthorized', error: error.message });
-    }
-  });
-  
-*/
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
