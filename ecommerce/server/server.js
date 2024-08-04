@@ -433,7 +433,7 @@ app.get('/api/orders', (req, res) => {
   app.post('/api/orders', (req, res) => {
     const { user_id, title, product_id, price, quantity, total_amount, image_url } = req.body;
   
-    if (!user_id || !title || !product_id || !price || !quantity || !total_amount) {
+    if (!user_id || !title || !product_id || !price || !quantity || !total_amount || !image_url) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
   

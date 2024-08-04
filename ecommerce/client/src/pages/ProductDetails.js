@@ -48,7 +48,6 @@ const ProductDetails = () => {
   if (!product) return <p>Loading...</p>; 
 
 
-  console.log(product.description)
 
   return (
 

@@ -231,7 +231,7 @@ export const AppProvider = ({ children }) => {
 */
   const postOrder = async (order) => {
     try {
-      const response = await axios.post(`${API_URL}/orders`, order, {
+      const response = await axios.post(`${API_URL}/orders`, {order}, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -240,7 +240,7 @@ export const AppProvider = ({ children }) => {
   
       if (response.status === 200) {
         console.log('Order placed successfully:', response.data);
-        return response.data;
+      setRes(response.data.message)
       } else {
         console.error('Failed to place order:', response.statusText);
         throw new Error(response.statusText);
@@ -300,7 +300,8 @@ const fetchOrders = async () => {
     if (response.status === 200) {
       console.log('Fetched orders successfully:', response.data);
       setOrderItems(response.data)
-      return response.data;
+      console.log(orderItems)
+      
     } else {
       console.error('Failed to fetch orders:', response.statusText);
       throw new Error(response.statusText);
