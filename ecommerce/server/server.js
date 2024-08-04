@@ -384,7 +384,9 @@ app.get('/api/orders', (req, res) => {
 const {order}=req.body
     const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
     
-
+    if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount || !order.image_url) {
+        return res.status(400).json({ message: 'Missing required fields' });
+      }
 
     const sql = `INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)`;
   
