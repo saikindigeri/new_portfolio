@@ -1,18 +1,19 @@
 
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
-import { useNavigate } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './Cart.css';
 import Header from '../components/Header';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, fetchCartItems,postOrder, res } = useAppContext();
+  const { cartItems, removeFromCart, fetchCartItems,postOrder, res ,fetchOrders} = useAppContext();
   const [totalPrice, setTotalPrice] = useState(0);
-  const navigate = useNavigate();
+
 
   
-    const handleBookNow = async (item) => {
+  const handleBookNow = async (item) => {
+    try {
       const order = {
         user_id: item.user_id,
         title: item.title,
@@ -22,10 +23,13 @@ const Cart = () => {
         total_amount: item.price * item.quantity,
         image_url: item.image_url
       };
-  
       await postOrder(order);
-     
-    };
+      fetchCartItems(); // Refresh cart items after booking
+      fetchOrders(); // Optionally refresh orders list
+    } catch (error) {
+      console.error('Failed to place order:', error);
+    }
+  };
 
 
   useEffect(() => {

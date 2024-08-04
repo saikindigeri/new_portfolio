@@ -369,7 +369,7 @@ app.get('/api/orders', (req, res) => {
 });
 
 */
-app.get('/api/orders', (req, res) => {
+/* app.get('/api/orders', (req, res) => {
     const sql = `SELECT * FROM orders`;
     
     db.all(sql, [], (err, rows) => {
@@ -379,12 +379,30 @@ app.get('/api/orders', (req, res) => {
       res.status(200).json(rows);
     });
   });
-  
+  */
   // Post a new order
 
+  app.get('/api/orders', (req, res) => {
+    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
+  
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+  
+    // Decode the token to get user_id
+    // This is a placeholder; implement actual token decoding and user validation
+    const user_id = decodeToken(token); // Replace with actual decoding logic
+  
+    db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
+      if (err) {
+        console.error('Error fetching orders:', err);
+        return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
+      }
+      res.status(200).json(rows);
+    });
+  });
 
-
-
+/*
   app.post('/api/orders', (req, res) => {
     const { order } = req.body; // Extract the `order` object from the request body
 
@@ -409,6 +427,26 @@ app.get('/api/orders', (req, res) => {
         res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
       }
     );
+  });
+
+  */
+  app.post('/api/orders', (req, res) => {
+    const { user_id, title, product_id, price, quantity, total_amount, image_url } = req.body;
+  
+    if (!user_id || !title || !product_id || !price || !quantity || !total_amount) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+  
+    db.run(`
+      INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
+      if (err) {
+        console.error('Error inserting order:', err);
+        return res.status(500).json({ message: 'Failed to create order', error: err.message });
+      }
+      res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
+    });
   });
   
 
