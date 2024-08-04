@@ -13,7 +13,30 @@ const PORT = process.env.PORT || 6000;
 const DB_PATH = path.resolve(__dirname, 'database.db');
 const JWT_SECRET = 'your_jwt_secret';  
 app.use(cors());
+
+
+
+ // Import the jsonwebtoken library
+
+// Function to decode the token and extract user_id
+const decodeToken = (token) => {
+  try {
+    // Replace 'your_secret_key' with your actual JWT secret key
+    const decoded = jwt.verify(token, 'your_secret_key');
+    return decoded.user_id; // Assuming the payload contains user_id
+  } catch (error) {
+    console.error('Token decoding error:', error);
+    return null; // Return null if token is invalid or expired
+  }
+};
+
+
+
 // Initialize SQLite database
+
+
+
+
 let db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) {
         console.error('Error opening database:', err);
