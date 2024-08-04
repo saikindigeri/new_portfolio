@@ -385,16 +385,20 @@ app.get('/api/orders', (req, res) => {
 
   app.post('/api/orders', (req, res) => {
     const { order } = req.body; // Extract the `order` object from the request body
+
+    if (!order) {
+      return res.status(400).json({ message: 'Order data is missing' });
+    }
   
-    if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount || !order.image_url) {
+    const { user_id, title, product_id, price, quantity, total_amount } = order;
+  
+    if (!user_id || !title || !product_id || !price || !quantity || !total_amount) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
   
-    const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
-  
     db.run(`INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url)
             VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [user_id, title, product_id, price, quantity, total_amount, image_url],
+      [user_id, title, product_id, price, quantity, total_amount, order.image_url || null],
       function (err) {
         if (err) {
           console.error('Failed to create order:', err);
