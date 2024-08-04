@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Cookies from 'js-cookie';
+
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './Home.css'
@@ -14,7 +14,7 @@ const Home = () => {
 
     <>
     <Header/>
-    <div className="container text-center ">
+    <div className="container home-con text-center ">
       <div className="welcome-section m-2">
         <h1 className="display-3">Hello, {client ? client : 'Guest'}!</h1>
         <h2 className="display-4">Welcome to Our E-Commerce Platform</h2>
