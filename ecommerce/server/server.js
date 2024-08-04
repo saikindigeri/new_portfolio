@@ -6,13 +6,13 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
-app.use(cors());
+
 
 const app = express();
 const PORT = process.env.PORT || 6000;
 const DB_PATH = path.resolve(__dirname, 'database.db');
 const JWT_SECRET = 'your_jwt_secret';  
-
+app.use(cors());
 // Initialize SQLite database
 let db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) {
