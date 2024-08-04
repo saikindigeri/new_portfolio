@@ -322,7 +322,7 @@ app.get('/api/orders', (req, res) => {
 
 
 
-app.post('/api/orders', authenticate, (req, res) => {
+app.post('/api/orders', (req, res) => {
     const { product_id, quantity } = req.body;
     const userId = req.userId;
 

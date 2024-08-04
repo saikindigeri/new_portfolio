@@ -43,6 +43,11 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
+ for (const item of cartItems){
+  postOrder(item.id,item.quantity)
+ }
+
+
     if (!validateForm()) return; 
     setLoading(true);
     setMessage('');
