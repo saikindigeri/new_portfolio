@@ -22,7 +22,7 @@ app.use(cors());
 const decodeToken = (token) => {
   try {
     // Replace 'your_secret_key' with your actual JWT secret key
-    const decoded = jwt.verify(token, 'your_secret_key');
+    const decoded = jwt.verify(token, 'JWT');
     return decoded.user_id; // Assuming the payload contains user_id
   } catch (error) {
     console.error('Token decoding error:', error);
