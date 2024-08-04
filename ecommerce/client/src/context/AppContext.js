@@ -217,9 +217,10 @@ export const AppProvider = ({ children }) => {
 
   const postOrder = async (order) => {
     try {
-      const response = await axios.post(`${API_URL}/orders`, { order }, {
-        headers: { 'Authorization': `Bearer ${user}` }, // Include any necessary headers
+      const response = await axios.post(`${API_URL}/orders`, {order},{
+        headers: { 'Authorization': `Bearer ${user}` },
       });
+      
       setRes(response.data.message); // Handle success message or response
       fetchOrders(); // Refresh orders if needed
     } catch (error) {

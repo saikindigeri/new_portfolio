@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
+app.use(cors());
+
 const app = express();
 const PORT = process.env.PORT || 6000;
 const DB_PATH = path.resolve(__dirname, 'database.db');
