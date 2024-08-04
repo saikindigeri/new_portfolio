@@ -244,11 +244,9 @@ export const AppProvider = ({ children }) => {
       )
       } else {
         
-        throw new Error(response.statusText);
       }
     } catch (error) {
-      console.error('Error posting order:', error);
-      throw error;
+    
     }
   };
   

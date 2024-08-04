@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, fetchCartItems,postOrder, res ,fetchOrders} = useAppContext();
+  const { cartItems, removeFromCart, fetchCartItems,postOrder, res ,} = useAppContext();
   const [totalPrice, setTotalPrice] = useState(0);
 
 const Navigate=useNavigate()
@@ -24,6 +24,7 @@ const Navigate=useNavigate()
         total_amount: item.price * item.quantity,
         image_url: item.image_url
       };
+      console.log(order)
       await postOrder(order);
      Navigate('/checkout')
     
@@ -80,8 +81,8 @@ const Navigate=useNavigate()
                 </div>
                 <div>
                   <button className="btn btn-danger me-2" onClick={() => handleRemoveCart(item.id)}>Remove</button>
-                  <button className="btn btn-primary" onClick={handleBookNow}>Buy Now</button>
-                  <h2>{res}</h2>
+                  <button className="btn btn-primary" onClick={()=>handleBookNow(item)}>Buy Now</button>
+                 
                 </div>
               </li>
             ))}

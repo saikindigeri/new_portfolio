@@ -1,5 +1,5 @@
 
-/*
+
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import './Checkout.css'; 
@@ -169,29 +169,3 @@ const Checkout = () => {
 
 export default Checkout;
 
-
-*/
-
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-
-const Checkout = () => {
-  const location = useLocation();
-  const { totalAmount } = location.state || { totalAmount: 0 }; // Get total amount from state
-
-  const handleConfirmOrder = () => {
-    // Process the order here
-    console.log('Order confirmed!');
-  };
-
-  return (
-    <div>
-      <h1>Checkout</h1>
-      <p>Total Amount: ${totalAmount}</p>
-      {/* Add form fields or payment options here */}
-      <button className="btn btn-primary" onClick={handleConfirmOrder}>Confirm Order</button>
-    </div>
-  );
-};
-
-export default Checkout;
