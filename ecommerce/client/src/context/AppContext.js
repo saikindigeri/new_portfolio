@@ -298,18 +298,13 @@ const fetchOrders = async () => {
       }
     });
 
-    if (response.status === 200) {
-      console.log('Fetched orders successfully:', response.data);
+   
       setOrderItems(response.data)
       console.log(orderItems)
       
-    } else {
-      console.error('Failed to fetch orders:', response.statusText);
-      throw new Error(response.statusText);
-    }
+    
   } catch (error) {
-    console.error('Error fetching orders:', error);
-    throw error;
+    
   }
 };
   const clearCart = () => {

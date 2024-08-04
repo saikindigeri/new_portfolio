@@ -381,26 +381,41 @@ app.get('/api/orders', (req, res) => {
   });
   */
   // Post a new order
-
+/*
   app.get('/api/orders', (req, res) => {
-    const token = req.headers['Authorization']?.split(' ')[1]; // Extract token
-  
+    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
+    
     if (!token) {
       return res.status(401).json({ message: 'No token provided' });
     }
   
-    // Decode the token to get user_id
-    // This is a placeholder; implement actual token decoding and user validation
-    const user_id = decodeToken(token); // Replace with actual decoding logic
+    console.log('Token received:', token);
   
-    db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
-      if (err) {
-        console.error('Error fetching orders:', err);
-        return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
+    // Decode the token to get user_id
+    try {
+      const user_id = decodeToken(token); // Replace with actual decoding logic
+      if (!user_id) {
+        return res.status(401).json({ message: 'Invalid token' });
       }
-      res.status(200).json(rows);
-    });
+  
+      db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
+        if (err) {
+          console.error('Error fetching orders:', err);
+          return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
+        }
+  
+        if (rows.length === 0) {
+          return res.status(404).json({ message: 'No orders found for this user' });
+        }
+  
+        res.status(200).json(rows);
+      });
+    } catch (error) {
+      console.error('Token decoding error:', error);
+      return res.status(401).json({ message: 'Unauthorized', error: error.message });
+    }
   });
+  
 
 /*
   app.post('/api/orders', (req, res) => {
@@ -449,7 +464,40 @@ app.get('/api/orders', (req, res) => {
     });
   });
   
-
+  app.get('/api/orders', (req, res) => {
+    const token = req.headers['authorization']?.split(' ')[1]; // Extract token
+    
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+  
+    console.log('Token received:', token);
+  
+    // Decode the token to get user_id
+    try {
+      const user_id = decodeToken(token); // Replace with actual decoding logic
+      if (!user_id) {
+        return res.status(401).json({ message: 'Invalid token' });
+      }
+  
+      db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
+        if (err) {
+          console.error('Error fetching orders:', err);
+          return res.status(500).json({ message: 'Failed to fetch orders', error: err.message });
+        }
+  
+        if (rows.length === 0) {
+          return res.status(404).json({ message: 'No orders found for this user' });
+        }
+  
+        res.status(200).json(rows);
+      });
+    } catch (error) {
+      console.error('Token decoding error:', error);
+      return res.status(401).json({ message: 'Unauthorized', error: error.message });
+    }
+  });
+  
 
 // Start the server
 app.listen(PORT, () => {

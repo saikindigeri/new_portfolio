@@ -11,7 +11,7 @@ const Orders = () => {
 
     useEffect(() => {
         fetchOrders();
-    }, [fetchOrders]);
+    }, []);
 
     useEffect(() => {
         const calculateTotalPrice = () => {

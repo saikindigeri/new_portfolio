@@ -5,12 +5,13 @@ import { useAppContext } from '../context/AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './Cart.css';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { cartItems, removeFromCart, fetchCartItems,postOrder, res ,fetchOrders} = useAppContext();
   const [totalPrice, setTotalPrice] = useState(0);
 
-
+const Navigate=useNavigate()
   
   const handleBookNow = async (item) => {
     try {
@@ -24,7 +25,7 @@ const Cart = () => {
         image_url: item.image_url
       };
       await postOrder(order);
-     
+     Navigate('/checkout')
     
     } catch (error) {
       console.error('Failed to place order:', error);
