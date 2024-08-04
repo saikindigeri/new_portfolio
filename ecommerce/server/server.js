@@ -379,27 +379,33 @@ app.get('/api/orders', (req, res) => {
   });
   
   // Post a new order
+
+
+
+
   app.post('/api/orders', (req, res) => {
-
-const {order}=req.body
-    const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
-    
-    if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount || !order.image_url) {
-        return res.status(400).json({ message: 'Missing required fields' });
-      }
-
-    const sql = `INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const { order } = req.body; // Extract the `order` object from the request body
   
-    
-    
-    db.run(sql, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
-      if (err) {
-        return res.status(500).json({ message: 'Failed to create order', error: err.message });
+    if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount || !order.image_url) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+  
+    const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
+  
+    db.run(`INSERT INTO orders (user_id, title, product_id, price, quantity, total_amount, image_url)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [user_id, title, product_id, price, quantity, total_amount, image_url],
+      function (err) {
+        if (err) {
+          console.error('Failed to create order:', err);
+          return res.status(500).json({ message: 'Failed to create order', error: err.message });
+        }
+        res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
       }
-      res.status(201).json({ message: 'Order created successfully', orderId: this.lastID });
-    });
+    );
   });
   
+
 
 // Start the server
 app.listen(PORT, () => {
