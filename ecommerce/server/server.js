@@ -382,9 +382,7 @@ app.get('/api/orders', (req, res) => {
   app.post('/api/orders', (req, res) => {
     const { order } = req.body; // Extract the `order` object from the request body
 
-  if (!order || !order.user_id || !order.title || !order.product_id || !order.price || !order.quantity || !order.total_amount) {
-    return res.status(400).json({ message: 'Missing required fields' });
-  }
+ 
 
   const { user_id, title, product_id, price, quantity, total_amount, image_url } = order;
     db.run(sql, [user_id, title, product_id, price, quantity, total_amount, image_url], function(err) {
