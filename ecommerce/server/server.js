@@ -392,7 +392,7 @@ app.get('/api/orders', (req, res) => {
 });
 
 */
-/* app.get('/api/orders', (req, res) => {
+ app.get('/api/orders', (req, res) => {
     const sql = `SELECT * FROM orders`;
     
     db.all(sql, [], (err, rows) => {
@@ -402,7 +402,7 @@ app.get('/api/orders', (req, res) => {
       res.status(200).json(rows);
     });
   });
-  */
+
   // Post a new order
 /*
   app.get('/api/orders', (req, res) => {
@@ -488,7 +488,7 @@ app.get('/api/orders', (req, res) => {
   });
 
 
-
+/*
   
   app.get('/api/orders', (req, res) => {
     const token = req.headers['authorization']?.split(' ')[1]; // Extract token
@@ -525,7 +525,7 @@ app.get('/api/orders', (req, res) => {
     }
   });
   
-
+*/
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
