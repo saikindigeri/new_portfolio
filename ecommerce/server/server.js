@@ -9,9 +9,9 @@ const path = require('path');
 
 
 const app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 7000;
 const DB_PATH = path.resolve(__dirname, 'database.db');
-const JWT_SECRET = 'sasasasasa';  
+const JWT_SECRET = 'your_jwt_secret';  
 app.use(cors());
 
 
@@ -22,7 +22,7 @@ app.use(cors());
 const decodeToken = (token) => {
   try {
     // Replace 'your_secret_key' with your actual JWT secret key
-    const decoded = jwt.verify(token, 'sasasasasa');
+    const decoded = jwt.verify(token, 'your_jwt_secret');
     return decoded.user_id; // Assuming the payload contains user_id
   } catch (error) {
     console.error('Token decoding error:', error);
@@ -503,8 +503,9 @@ app.get('/api/orders', (req, res) => {
     try {
       const user_id = decodeToken(token); // Replace with actual decoding logic
       if (!user_id) {
-        return res.status(401).json({ message: 'Invalid token' });
+        return res.status(401).json({ message: 'Invalid token',user:user_id });
       }
+
   
       db.all('SELECT * FROM orders WHERE user_id = ?', [user_id], (err, rows) => {
         if (err) {
