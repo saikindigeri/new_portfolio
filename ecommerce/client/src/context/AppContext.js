@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AppContext = createContext();
 
-const API_URL = 'https://claw-back.onrender.com/api';
+const API_URL = 'https://claw-ass.onrender.com/api';
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
