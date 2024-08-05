@@ -104,7 +104,7 @@ app.post('/api/auth/register', async (req, res) => {
 
 
 // localhost:7000/api/auth/login
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', async(req, res) => {
     const { username, password } = req.body;
     db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
         if (err) return res.status(500).send(err.message);
