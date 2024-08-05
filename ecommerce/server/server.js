@@ -28,7 +28,7 @@ const decodeToken = (token) => {
 
 
 
-
+}
 
 
 
@@ -173,7 +173,7 @@ app.get('/api/cart', (req, res) => {
 });
 
 
-
+/*
 
 app.post('/api/cart', (req, res) => {
     const { product_id, quantity } = req.body;
@@ -193,7 +193,7 @@ app.post('/api/cart', (req, res) => {
         });
     });
 });
-
+*/
 
 app.post('/api/cart', (req, res) => {
     const { product_id, quantity } = req.body;
@@ -280,6 +280,7 @@ app.delete('/api/cart/:id', (req, res) => {
   });
 
 
-app.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});
+})
+
