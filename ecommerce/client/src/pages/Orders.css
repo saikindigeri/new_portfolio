@@ -16,6 +16,9 @@
 
 .order-item {
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightskyblue;
 }
 
 .order-item:hover {
@@ -40,7 +43,3 @@
     color: darkgreen;
 }
 
-
-.bgimage{
-    background-color: lightblue;
-}
