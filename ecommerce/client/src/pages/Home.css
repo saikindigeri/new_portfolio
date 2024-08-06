@@ -1,48 +1,57 @@
-
-.welcome-section {
-    
-    background-color: lightblue; 
-  border-radius: 10px;
-    color: white;
-    height: 100vh;
-    width: 100%;
-
-  }
-  
-.home-con{
-  padding: 10px;
+/* General container styling */
+.home-con {
+  background-color: #f0f8ff; /* Light Alice Blue background color */
+  color: #333;
+  transition: background-color 0.5s ease; /* Smooth background color transition */
+  padding: 20px;
 }
 
-  .display-3 {
-  
-    font-weight: 400;
-  color: black;
-font-style: italic;
-margin: 20px;
-  }
-  
-  .display-4 {
-    font-weight: 200;
-   color: black;
-    font-style: italic;
-  }
-  
-  .lead {
-    font-size: 1.25rem;
-    font-weight: bold;
+/* Styling for the welcome section */
+.welcome-section {
+  background-color: #ffffff; /* White background for the welcome section */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for card effect */
+  border-radius: 8px;
+  padding: 20px;
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
+}
 
-    font-style: italic;
-  color: black;
+/* Styling for the info section */
+.info-section {
+  background-color: #e3f2fd; /* Light blue background */
+  padding: 20px;
+  border-radius: 8px;
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
+}
+
+/* Styling for the testimonials section */
+.testimonials-section {
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for card effect */
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
+}
+
+/* Button styling and hover effect */
+.btn-success {
+  background-color: #28a745; /* Green button color */
+  border-color: #28a745;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px); /* Slightly move up */
   }
-  
-  .btn-primary {
-    background-color: #007bff; 
-    border-color: #007bff;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  to {
+      opacity: 1;
+      transform: translateY(0); /* Move to original position */
   }
-  
-  .btn-primary:hover {
-    background-color: #0056b3; 
-    border-color: #004085;
-  }
-  
+}

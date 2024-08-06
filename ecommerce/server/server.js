@@ -91,39 +91,7 @@ const createTables = () => {
 app.use(cors());
 app.use(bodyParser.json());
  
-/*
-// localhost:7000/api/auth/register
-app.post('/api/auth/register', async (req, res) => {
-    try{
-    const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], function (err) {
-        if (err) return res.status(500).send(err.message);
-        res.status(201).send({ id: this.lastID, message: 'User registered successfully' });
-    });
-} catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-}
-});
 
-
-// localhost:7000/api/auth/login
-app.post('/api/auth/login', async(req, res) => {
-    try{
-    const { username, password } = req.body;
-    db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-        if (err) return res.status(500).send(err.message);
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(401).send('Invalid credentials');
-        }
-        const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token,message:"Login Successful" });
-    });
-} catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-}
-});
-*/
 app.post('/api/auth/register', async (req, res) => {
     const { username, password } = req.body;
 
@@ -215,66 +183,6 @@ app.get('/api/cart', (req, res) => {
 });
 
 
-/*
-
-app.post('/api/cart', (req, res) => {
-    const { product_id, quantity } = req.body;
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).send('Token required');
-    
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
-        const userId = decoded.id;
-        db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
-            if (err) return res.status(500).send(err.message);
-            if (!product) return res.status(404).send('Product not found');
-            db.run('INSERT INTO cart (user_id, product_id, title, price, quantity, image_url) VALUES (?, ?, ?, ?, ?, ?)', [userId, product_id, product.name, product.price, quantity, product.image_url], function (err) {
-                if (err) return res.status(500).send(err.message);
-                res.status(201).send({ id: this.lastID, message: 'Product added to cart' });
-            });
-        });
-    });
-});
-*/
-
-
-
-/*
-app.post('/api/cart', (req, res) => {
-    const { product_id, quantity } = req.body;
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).send('Token required');
-
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(401).send('Invalid token');
-        const userId = decoded.id;
-        
-
-        db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, existingItem) => {
-            if (err) return res.status(500).send(err.message);
-
-            if (existingItem) {
-                
-                const newQuantity = existingItem.quantity + quantity;
-                db.run('UPDATE cart SET quantity = ? WHERE id = ?', [newQuantity, existingItem.id], function (err) {
-                    if (err) return res.status(500).send(err.message);
-                    res.status(200).send({ message: 'Cart updated successfully' });
-                });
-            } else {
-                
-                db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
-                    if (err) return res.status(500).send(err.message);
-                    if (!product) return res.status(404).send('Product not found');
-                    db.run('INSERT INTO cart (user_id, product_id, title, price, quantity, image_url) VALUES (?, ?, ?, ?, ?, ?)', [userId, product_id, product.title, product.price, quantity, product.image_url], function (err) {
-                        if (err) return res.status(500).send(err.message);
-                        res.status(201).send({ id: this.lastID, message: 'Product added to cart' });
-                    });
-                });
-            }
-        });
-    });
-});
-*/
 
 app.post('/api/cart', (req, res) => {
     const { product_id, quantity } = req.body;

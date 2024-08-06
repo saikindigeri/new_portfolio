@@ -1,56 +1,44 @@
-
-
 .orders-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: #97c9fc; /* Light background color */
     padding: 20px;
-    background: #f8f9fa;
     border-radius: 8px;
 }
 
-.order-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.image-item{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 .order-item {
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: lightskyblue;
+    background-color: #4984dd; /* Updated background color for order items */
+   /* Border color for card */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   
 }
 
 .order-item:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
+.order-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-
-.card-body{
-    background-color: skyblue;
+.order-image {
+    flex: 0 0 120px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.card-text {
-    font-size: 1rem;
-    color: #555;
+
+.order-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
 }
 
 .total-price {
     margin-top: 20px;
     font-size: 1.5rem;
     font-weight: bold;
-    color: darkgreen;
+    text-align: right;
 }
-

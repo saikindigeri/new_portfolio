@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
@@ -22,10 +24,17 @@ const Header = () => {
     ) : null;
   };
 
+  const clientName = localStorage.getItem('clientName'); // Fetch clientName from localStorage
+
   return (
     <header className="bg-dark text-light shadow-sm">
       <nav className="navbar navbar-expand-lg navbar-dark container">
-        <Link to="/" className="navbar-brand fw-bold">MyStore</Link>
+        <div className="d-flex align-items-center">
+          <Link to="/" className="navbar-brand fw-bold">MyStore</Link>
+          {clientName && (
+            <span className="navbar-text ms-3 text-light">Hello, {clientName}!</span>
+          )}
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -57,7 +66,7 @@ const Header = () => {
               <Link to="/orders" className="nav-link">My Orders</Link>
             </li>
           </ul>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center ms-3">
             <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
           </div>
         </div>
