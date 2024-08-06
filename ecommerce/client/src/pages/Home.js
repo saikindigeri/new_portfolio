@@ -8,7 +8,7 @@ import Header from '../components/Header';
 
 
 const Home = () => {
-  const client = localStorage.getItem('client')
+  const client = localStorage.getItem('clientName')
   console.log(localStorage.getItem('token'))
   return (
 

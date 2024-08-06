@@ -50,7 +50,8 @@ const login = async (username, password) => {
     try {
         const response = await axios.post(`${API_URL}/auth/login`, { username, password });
         if (response.status === 200) {
-            localStorage.setItem('token', response.data.token); // Store the token
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('clientName',username) // Store the token
             setMessage(response.data.message);
             setUser(response.data.token)
             setError(null); // Clear previous errors
@@ -68,7 +69,7 @@ const login = async (username, password) => {
 };
   const logout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('client')
+   localStorage.removeItem('clientName')
    
     setMessage('');
     navigate('/login');

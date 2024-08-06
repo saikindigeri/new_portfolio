@@ -239,7 +239,7 @@ app.post('/api/cart', (req, res) => {
 
 
 
-
+/*
 app.post('/api/cart', (req, res) => {
     const { product_id, quantity } = req.body;
     const token = req.headers.authorization?.split(' ')[1];
@@ -269,6 +269,68 @@ app.post('/api/cart', (req, res) => {
                         if (err) return res.status(500).send(err.message);
                         res.status(201).send({ id: this.lastID, message: 'Product added to cart' });
                     });
+                });
+            }
+        });
+    });
+});
+*/
+
+app.post('/api/cart', (req, res) => {
+    const { product_id, quantity } = req.body;
+    const token = req.headers.authorization?.split(' ')[1];
+
+    console.log(`Received request with product_id: ${product_id}, quantity: ${quantity}`); // Debug log
+    if (!token) {
+        console.log('No token provided'); // Debug log
+        return res.status(401).send('Token required');
+    }
+
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+        if (err) {
+            console.log(`Token verification error: ${err.message}`); // Debug log
+            return res.status(401).send('Invalid token');
+        }
+        const userId = decoded.id;
+
+        db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, existingItem) => {
+            if (err) {
+                console.log(`Error querying cart: ${err.message}`); // Debug log
+                return res.status(500).send(err.message);
+            }
+
+            if (existingItem) {
+                console.log(`Item already in cart, updating quantity`); // Debug log
+                const newQuantity = existingItem.quantity + quantity;
+                db.run('UPDATE cart SET quantity = ? WHERE id = ?', [newQuantity, existingItem.id], function (err) {
+                    if (err) {
+                        console.log(`Error updating cart: ${err.message}`); // Debug log
+                        return res.status(500).send(err.message);
+                    }
+                    res.status(200).send({ message: 'Cart updated successfully' });
+                });
+            } else {
+                console.log(`Fetching product with id: ${product_id}`); // Debug log
+                db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
+                    if (err) {
+                        console.log(`Error fetching product: ${err.message}`); // Debug log
+                        return res.status(500).send(err.message);
+                    }
+                    if (!product) {
+                        console.log('Product not found'); // Debug log
+                        return res.status(404).send('Product not found');
+                    }
+                    console.log(`Product found: ${JSON.stringify(product)}`); // Debug log
+                    db.run('INSERT INTO cart (user_id, product_id, title, price, quantity, image_url) VALUES (?, ?, ?, ?, ?, ?)', 
+                        [userId, product_id, product.title, product.price, quantity, product.image_url], 
+                        function (err) {
+                            if (err) {
+                                console.log(`Error inserting into cart: ${err.message}`); // Debug log
+                                return res.status(500).send(err.message);
+                            }
+                            res.status(201).send({ id: this.lastID, message: 'Product added to cart' });
+                        }
+                    );
                 });
             }
         });
