@@ -42,7 +42,7 @@ const Orders = () => {
                                 <p className="card-text">Price: Rs {order.price}</p>
                             </div>
                          <div>
-                            <img src={order.image_url} alt="image" />
+                            <img src={order.image_url} alt="image"  style={{ width: '100px' }}  />
                          </div>
                         </div>
                     ))}
