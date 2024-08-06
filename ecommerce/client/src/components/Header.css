@@ -1,16 +1,16 @@
-/* Header.css */
+
 
 .navbar-text {
-  color: #f8f9fa; /* Light color for text */
-  font-size: 1.1rem; /* Adjust font size as needed */
+  color: #f8f9fa; 
+  font-size: 1.1rem;
 }
 
 .navbar-nav .nav-link {
-  margin-right: 15px; /* Spacing between nav items */
+  margin-right: 15px;
 }
 
 .navbar-brand {
-  font-size: 1.5rem; /* Adjust brand font size */
+  font-size: 1.5rem; 
 }
 
 .btn-outline-light {
@@ -20,5 +20,5 @@
 
 .btn-outline-light:hover {
   background-color: #f8f9fa;
-  color: #343a40;
+  color: white;
 }
