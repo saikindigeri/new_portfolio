@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  
   const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem('token');
-  const {login}=useAppContext()
+  const {login,message}=useAppContext()
 
   
 
@@ -66,7 +66,7 @@ const handleRes=()=>{
                 />
                 <label htmlFor="password">Password</label>
               </div>
-              {error && <div className="alert alert-danger mt-3">{error}</div>}
+              {message && <div className="alert alert-danger mt-3">{message}</div>}
               <button type="submit" className="btn btn-primary w-100 py-2 mt-3">Login</button>
               <div className="text-center mt-4">
               <p onClick={handleRes}>Don't have an account?Register here</p>

@@ -4,7 +4,7 @@ import './Register.css';
 import {  useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const { register, error } = useAppContext();
+  const { register, message } = useAppContext();
   const [username, setUsername] = useState('');
 
   const [password, setPassword] = useState('');
@@ -57,7 +57,7 @@ Navigate('/login')
                   <label htmlFor="password">Password</label>
                 </div>
              
-                {error && <div className="alert alert-danger mt-3">{error}</div>}
+                {message && <div className="alert alert-danger mt-3">{message}</div>}
                 <button type="submit" className="btn btn-success w-100 py-2 mt-3">Register</button>
                 <div className="text-center mt-4">
             <p onClick={handleLog}>Already have an account?Log in</p>

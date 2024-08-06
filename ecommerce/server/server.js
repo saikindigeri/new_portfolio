@@ -237,6 +237,9 @@ app.post('/api/cart', (req, res) => {
 });
 */
 
+
+/* imp
+
 app.post('/api/cart', (req, res) => {
     const { product_id, quantity } = req.body;
     const token = req.headers.authorization?.split(' ')[1];
@@ -270,7 +273,44 @@ app.post('/api/cart', (req, res) => {
         });
     });
 });
+*/
+app.post('/api/cart', (req, res) => {
+    const { product_id, quantity } = req.body;
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return res.status(401).send('Token required');
 
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+        if (err) return res.status(401).send('Invalid token');
+        const userId = decoded.id;
+
+        db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, existingItem) => {
+            if (err) return res.status(500).send(err.message);
+
+            if (existingItem) {
+                // Update quantity if item already exists in the cart
+                const newQuantity = existingItem.quantity + quantity;
+                db.run('UPDATE cart SET quantity = ? WHERE id = ?', [newQuantity, existingItem.id], function (err) {
+                    if (err) return res.status(500).send(err.message);
+                    res.status(200).send({ message: 'Cart updated successfully' });
+                });
+            } else {
+                // Insert new item into the cart
+                db.get('SELECT * FROM products WHERE id = ?', [product_id], (err, product) => {
+                    if (err) return res.status(500).send(err.message);
+                    if (!product) return res.status(404).send('Product not found');
+
+                    db.run('INSERT INTO cart (user_id, product_id, title, price, quantity, image_url) VALUES (?, ?, ?, ?, ?, ?)', 
+                        [userId, product_id, product.title, product.price, quantity, product.image_url], 
+                        function (err) {
+                            if (err) return res.status(500).send(err.message);
+                            res.status(201).send({ id: this.lastID, message: 'Product added to cart' });
+                        }
+                    );
+                });
+            }
+        });
+    });
+});
 
 
 

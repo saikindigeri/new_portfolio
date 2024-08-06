@@ -10,7 +10,7 @@ const AppContext = createContext();
 const API_URL = 'https://claw-ass.onrender.com/api';
 
 export const AppProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
   const [message, setMessage] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
@@ -33,50 +33,52 @@ export const AppProvider = ({ children }) => {
         if (response.status === 201) {
             setMessage(response.data.message);
             setError(null); // Clear previous errors
+            navigate('/login'); // Navigate to login page after successful registration
         }
     } catch (error) {
         setMessage(null); // Clear previous messages
         if (error.response) {
-            // Handle specific error messages from the server
             setError(error.response.data || 'Registration failed. Please try again.');
         } else {
-            // Handle network errors or other issues
             setError('Registration failed. Please check your connection.');
         }
         console.error('Registration error:', error);
     }
 };
+
 const login = async (username, password) => {
-  try {
-      const response = await axios.post(`${API_URL}/auth/login`, { username, password });
-      if (response.status === 200) {
-          setUser(response.data.token);
-          setMessage(response.data.message);
-          setError(null); // Clear previous errors
-      }
-  } catch (error) {
-      setMessage(null); // Clear previous messages
-      if (error.response) {
-          // Handle specific error messages from the server
-          setError(error.response.data || 'Login failed. Please try again.');
-      } else {
-          // Handle network errors or other issues
-          setError('Login failed. Please check your connection.');
-      }
-      console.error('Login error:', error);
-  }
+    try {
+        const response = await axios.post(`${API_URL}/auth/login`, { username, password });
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token); // Store the token
+            setMessage(response.data.message);
+            setUser(response.data.token)
+            setError(null); // Clear previous errors
+            navigate('/'); // Navigate to home page after successful login
+        }
+    } catch (error) {
+        setMessage(null); // Clear previous messages
+        if (error.response) {
+            setError(error.response.data || 'Login failed. Please try again.');
+        } else {
+            setError('Login failed. Please check your connection.');
+        }
+        console.error('Login error:', error);
+    }
 };
   const logout = () => {
     localStorage.removeItem('token');
-    setUser(null);
+    localStorage.removeItem('client')
+   
     setMessage('');
     navigate('/login');
   };
 
   const addToCart = async (id, quantity) => {
+    const token=localStorage.getItem('token')
     try {
       const response = await axios.post(`${API_URL}/cart`, { product_id: id, quantity }, {
-        headers: { 'Authorization': `Bearer ${user}` },
+        headers: { 'Authorization': `Bearer ${token}` },
       });
       setRes(response.data.message);
       fetchCartItems(); // Refresh cart items
