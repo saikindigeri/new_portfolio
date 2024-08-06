@@ -248,13 +248,13 @@ app.post('/api/cart', (req, res) => {
     jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if (err) return res.status(401).send('Invalid token');
         const userId = decoded.id;
-        res.json({userId})
+        
 
         db.get('SELECT * FROM cart WHERE user_id = ? AND product_id = ?', [userId, product_id], (err, existingItem) => {
             if (err) return res.status(500).send(err.message);
 
             if (existingItem) {
-               
+                
                 const newQuantity = existingItem.quantity + quantity;
                 db.run('UPDATE cart SET quantity = ? WHERE id = ?', [newQuantity, existingItem.id], function (err) {
                     if (err) return res.status(500).send(err.message);
