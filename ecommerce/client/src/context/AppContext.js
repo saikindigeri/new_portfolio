@@ -75,10 +75,10 @@ const login = async (username, password) => {
   };
 
   const addToCart = async (id, quantity) => {
-    const token=localStorage.getItem('token')
+ 
     try {
       const response = await axios.post(`${API_URL}/cart`, { product_id: id, quantity }, {
-        headers: { 'Authorization': `Bearer ${token}` },
+        headers: { 'Authorization': `Bearer ${user}` },
       });
       setRes(response.data.message);
       fetchCartItems(); // Refresh cart items
