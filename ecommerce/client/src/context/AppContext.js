@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AppContext = createContext();
 
-const API_URL = 'https://claw-serverr.onrender.com/api';
+const API_URL = 'https://claw-ass.onrender.com/api';
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -29,57 +29,43 @@ export const AppProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const response = await fetch(`${API_URL}/auth/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message);
-        setError(null); // Clear previous errors
-      } else {
-        setMessage(null); // Clear previous messages
-        setError(data || 'Registration failed. Please try again.');
-      }
+        const response = await axios.post(`${API_URL}/auth/register`, { username, password });
+        if (response.status === 201) {
+            setMessage(response.data.message);
+            setError(null); // Clear previous errors
+        }
     } catch (error) {
-      setMessage(null); // Clear previous messages
-      setError('Registration failed. Please check your connection.');
-      console.error('Registration error:', error);
+        setMessage(null); // Clear previous messages
+        if (error.response) {
+            // Handle specific error messages from the server
+            setError(error.response.data || 'Registration failed. Please try again.');
+        } else {
+            // Handle network errors or other issues
+            setError('Registration failed. Please check your connection.');
+        }
+        console.error('Registration error:', error);
     }
-  };
-
-  // Login function
-  const login = async (username, password) => {
-    try {
-      const response = await fetch(`${API_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        // Store the token or user data
-        setUser(data.token);
-        setMessage(data.message);
-        setError(null); // Clear previous errors
-      } else {
-        setMessage(null); // Clear previous messages
-        setError(data || 'Login failed. Please check your credentials.');
+};
+const login = async (username, password) => {
+  try {
+      const response = await axios.post(`${API_URL}/auth/login`, { username, password });
+      if (response.status === 200) {
+          setUser(response.data.token);
+          setMessage(response.data.message);
+          setError(null); // Clear previous errors
       }
-    } catch (error) {
+  } catch (error) {
       setMessage(null); // Clear previous messages
-      setError('Login failed. Please check your connection.');
+      if (error.response) {
+          // Handle specific error messages from the server
+          setError(error.response.data || 'Login failed. Please try again.');
+      } else {
+          // Handle network errors or other issues
+          setError('Login failed. Please check your connection.');
+      }
       console.error('Login error:', error);
-    }
-  };
-
+  }
+};
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);

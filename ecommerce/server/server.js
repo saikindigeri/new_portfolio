@@ -126,31 +126,36 @@ app.post('/api/auth/login', async(req, res) => {
 */
 app.post('/api/auth/register', async (req, res) => {
     const { username, password } = req.body;
-    try {
+
+    // Check if username already exists
+    db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
+        if (err) return res.status(500).send(err.message);
+
+        if (user) {
+            return res.status(409).send('Username already exists'); // Conflict status
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], function (err) {
-            if (err) return res.status(500).json({ error: err.message });
-            res.status(201).json({ id: this.lastID, message: 'User registered successfully' });
+            if (err) return res.status(500).send(err.message);
+            res.status(201).send({ id: this.lastID, message: 'User registered successfully' });
         });
-    } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
-    }
-}); 
+    });
+});
 
 app.post('/api/auth/login', async (req, res) => {
     const { username, password } = req.body;
-    try {
-        db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-            if (err) return res.status(500).json({ error: err.message });
-            if (!user || !(await bcrypt.compare(password, user.password))) {
-                return res.status(401).json({ error: 'Invalid credentials' });
-            }
-            const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
-            res.json({ token, message: 'Login Successful' });
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
-    }
+    db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
+        if (err) return res.status(500).send(err.message);
+        if (!user) {
+            return res.status(401).send('Invalid username or password'); // Handle username not found
+        }
+        if (!(await bcrypt.compare(password, user.password))) {
+            return res.status(401).send('Invalid username or password'); // Handle incorrect password
+        }
+        const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token, message: 'Login Successful' });
+    });
 });
 
 
