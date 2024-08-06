@@ -90,21 +90,26 @@ const createTables = () => {
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
+ 
 
 // localhost:7000/api/auth/register
 app.post('/api/auth/register', async (req, res) => {
+    try{
     const { username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], function (err) {
         if (err) return res.status(500).send(err.message);
         res.status(201).send({ id: this.lastID, message: 'User registered successfully' });
     });
+} catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+}
 });
 
 
 // localhost:7000/api/auth/login
 app.post('/api/auth/login', async(req, res) => {
+    try{
     const { username, password } = req.body;
     db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
         if (err) return res.status(500).send(err.message);
@@ -114,6 +119,9 @@ app.post('/api/auth/login', async(req, res) => {
         const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
         res.json({ token,message:"Login Successful" });
     });
+} catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+}
 });
 
 

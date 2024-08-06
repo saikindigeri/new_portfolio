@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AppContext = createContext();
 
-const API_URL = 'https://claw-ass.onrender.com/api';
+const API_URL = 'https://claw-serverr.onrender.com/api';
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -27,37 +27,56 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (username,password) => {
+  const register = async (username, password) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, username,password);
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('client', username);
-        setUser(response.data.token);
-        setMessage('Login successful!');
-        setError(response.data.message)
-        
-        navigate('/');
+      const response = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setMessage(data.message);
+        setError(null); // Clear previous errors
       } else {
-        setMessage('Invalid credentials');
+        setMessage(null); // Clear previous messages
+        setError(data || 'Registration failed. Please try again.');
       }
     } catch (error) {
-      setMessage('Invalid credentials');
-      console.error('Login error:', error);
+      setMessage(null); // Clear previous messages
+      setError('Registration failed. Please check your connection.');
+      console.error('Registration error:', error);
     }
   };
 
-  const register = async (username,password) => {
+  // Login function
+  const login = async (username, password) => {
     try {
-  const response=    await axios.post(`${API_URL}/auth/register`, username,password);
-  if (response.data.status===201){
-    setError(response.data.message)
-  }
-    
-     
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        // Store the token or user data
+        setUser(data.token);
+        setMessage(data.message);
+        setError(null); // Clear previous errors
+      } else {
+        setMessage(null); // Clear previous messages
+        setError(data || 'Login failed. Please check your credentials.');
+      }
     } catch (error) {
-      setMessage('Registration failed. Please try again.');
-      console.error('Registration error:', error);
+      setMessage(null); // Clear previous messages
+      setError('Login failed. Please check your connection.');
+      console.error('Login error:', error);
     }
   };
 

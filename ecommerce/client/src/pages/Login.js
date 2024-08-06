@@ -10,7 +10,7 @@ const Login = () => {
   const isAuthenticated = localStorage.getItem('token');
   const {login}=useAppContext()
 
-
+  
 
 
   const handleLogin = (e) => {
@@ -28,7 +28,9 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
-
+const handleRes=()=>{
+  navigate('/register')
+}
 
   return (
     <div className="container mt-5">
@@ -67,7 +69,7 @@ const Login = () => {
               {error && <div className="alert alert-danger mt-3">{error}</div>}
               <button type="submit" className="btn btn-primary w-100 py-2 mt-3">Login</button>
               <div className="text-center mt-4">
-                <p className="mb-0">Don't have an account? <a href="/register" className="text-primary">Register here</a></p>
+              <p onClick={handleRes}>Don't have an account?Register here</p>
               </div>
             </form>
           </div>

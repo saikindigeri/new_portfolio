@@ -9,13 +9,17 @@ const Register = () => {
 
   const [password, setPassword] = useState('');
 
-
+const Navigate=useNavigate()
 
 
   const handleRegister = (e) => {
     e.preventDefault();
     register(username,password);
   };
+
+const handleLog=()=>{
+Navigate('/login')
+}
 
   return (
     <div className="container mt-5">
@@ -56,7 +60,7 @@ const Register = () => {
                 {error && <div className="alert alert-danger mt-3">{error}</div>}
                 <button type="submit" className="btn btn-success w-100 py-2 mt-3">Register</button>
                 <div className="text-center mt-4">
-                  <p className="mb-0">Already have an account? <a href="/login" className="text-success">Login here</a></p>
+            <p onClick={handleLog}>Already have an account?Log in</p>
                 </div>
               </form>
             </div>
