@@ -62,11 +62,7 @@ const Navigate=useNavigate()
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          {res && (
-            <div className="alert alert-success fade show" role="alert">
-              {res}
-            </div>
-          )}
+         
           <ul className="list-group">
             {cartItems.map(item => (
               <li className="list-group-item d-flex align-items-center justify-content-between" key={item.id}>
@@ -87,6 +83,11 @@ const Navigate=useNavigate()
               </li>
             ))}
           </ul>
+          {res && (
+            <div className="alert alert-success fade show" role="alert">
+              {res}
+            </div>
+          )}
           <h3 className="mt-4">Total Price:Rs. {totalPrice.toFixed(2)}</h3>
         </div>
       )}
