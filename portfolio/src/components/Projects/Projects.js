@@ -20,75 +20,75 @@
   const projectsData = [
    
     {
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149230/Screenshot_2024-08-09_015448_hecr5b.png',
         title:"Nxtwave Ecommerce",
-        description: 'Project 1 description',
+        description: 'Ecommmerce website built using rest apis',
         tech: ['React', 'Node.js', 'Css'],
         demo: 'https://sainxtcart.ccbp.tech/',
         github: 'https://github.com/saikindigeri/nxt_trendz_eCommerce.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149234/Screenshot_2024-08-09_015535_ek4r3l.png',
         title:"Jobby App",
-        description: 'Project 1 description',
+        description: 'A platform which is used to find jobs',
         tech: ['React', 'Node.js', 'Css'],
         demo: 'https://saikumarjobby.ccbp.tech/',
         github: 'https://github.com/saikindigeri/jobby_app.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149334/Screenshot_2024-08-09_020518_npmg6j.png',
         title:"NxtWatch",
-        description: 'Project 1 description',
+        description: 'Youtube like website to watch different kind of videos',
         tech: ['React', 'Node.js', 'Css'],
         demo: 'https://saikwatch.ccbp.tech/',
         github: 'https://github.com/saikindigeri/nxtwatch.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149244/Screenshot_2024-08-09_015938_qo7e81.png',
         title:"Google Keep",
-        description: 'Project 1 description',
+        description: 'A Note Keep used to maintain notes with features',
         tech: ['JavaScript', 'Node.js', 'Bootstrap'],
         demo: 'https://keep-backend-smoky.vercel.app/',
         github: 'https://github.com/saikindigeri/keep_backend.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149238/Screenshot_2024-08-09_015754_i9ct6h.png',
         title:"Mahjong Game",
-        description: 'Project 1 description',
+        description: 'Game to match pair of images or animals',
         tech: ['React', 'Css'],
         demo: 'https://mahajong-game.vercel.app/',
         github: 'https://github.com/saikindigeri/mahajong-game.git'
       },{
-        image: 'path/to/image1.jpg',
-        title:"Todo App",
-        description: 'Project 1 description',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723150278/Screenshot_2024-08-09_022106_elyfiq.png',
+        title:"Retailer Dashboard",
+        description: 'A simple Dashboard to view the Data.',
         tech: ['React', 'Node.js', 'Sqlite'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
+        demo: 'https://64-dashboard.vercel.app',
+        github: 'https://github.com/saikindigeri/64_dashboard.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149261/Screenshot_2024-08-09_020302_ekcsr1.png',
         title:"My Store",
-        description: 'Project 1 description',
+        description: 'Ecommerce with complete Auth,Crud operations.',
         tech: ['React', 'Node.js', 'Sqlite'],
         demo: 'https://claw-serve.vercel.app/',
         github: 'https://github.com/saikindigeri/claw_serve.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149247/Screenshot_2024-08-09_020101_uhyxop.png',
         title:"Finance Manager",
-        description: 'Project 1 description',
+        description: 'Tracker used to track all the transactions ',
         tech: ['React', 'Node.js', 'MySql'],
         demo: 'https://transassign.netlify.app/',
         github: 'https://github.com/saikindigeri/finance_manager.git'
       },{
-        image: 'path/to/image1.jpg',
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723149250/Screenshot_2024-08-09_020220_b8nwuf.png',
         title:"RealEstate App ",
-        description: 'Project 1 description',
+        description: 'A realestate app used to book properties',
         tech: ['React', 'Node.js','Css','Bootstrap'],
         demo: 'https://totality-frontend-challenge-rust.vercel.app/',
         github: 'https://github.com/saikindigeri/totality-frontend-challenge.git'
       },{
-        image: 'path/to/image1.jpg',
-        title:"Blogs",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
+        image: 'https://res.cloudinary.com/dyjmh036b/image/upload/v1723150052/Screenshot_2024-08-09_021629_rec02a.png',
+        title:"Covid Dashboard",
+        description: 'Dashboard regarding data of covid ',
+        tech: ['React', 'Apis', 'Css'],
+        demo: 'https://ksaicovid.ccbp.tech',
+        github: 'https://github.com/saikindigeri/coviddash.git'
       },
   ];
   
@@ -147,7 +147,7 @@
               <Card className="project-card">
                 <Card.Img variant="top" src={project.image} className="project-image" />
                 <Card.Body>
-                <Card.Header className="project-description">
+                <Card.Header className="project-des">
                     {project.title}
                   </Card.Header>
                   <Card.Text className="project-description">

@@ -52,6 +52,7 @@
     border: 1px solid #ddd;
     width: 400px;
     border-radius: 10px;
+
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
@@ -69,9 +70,17 @@
   }
   
   .project-description {
-    font-size: 1.2rem;
+    font-size:15px;
     margin: 10px 0;
 
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+
+  .project-des {
+    font-size:20px;
+    margin: 10px 0;
+background-color: rgb(0, 78, 74);
     font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -87,7 +96,9 @@
   .project-buttons .btn {
     margin: 0 5px;
   }
-  
+  .tech-icon{
+    margin-right: 20px;
+  }
   /* Hide the scrollbar for all browsers */
   .projects-container::-webkit-scrollbar {
     display: none;
