@@ -1,0 +1,83 @@
+.portfolio {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    overflow: hidden; /* Hide overflow to keep the layout clean */
+    position: relative;
+    height: 500px; /* Adjust height as needed */
+  }
+  
+  .portfolio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .name-title{
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: #00796b;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
+  }
+
+  .name-title::after{
+    content: '';
+    display: block;
+    width: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 3px;
+    background: #00796b;
+    margin: 10px auto;
+    transition: width 0.3s ease;
+    animation: lineExpand 1s ease-in-out;
+  }
+  
+  .portfolio-container {
+    display: flex;
+    white-space: nowrap; /* Keep images in a single line */
+    overflow: hidden; /* Hide scrollbar */
+    height: 100%; /* Make container height equal to its parent */
+    position: absolute; /* To position animation correctly */
+    width: 1000%; /* Ensure container is full width */
+    animation: scroll-left 120s linear infinite; /* Adjust duration for slower scrolling */
+    animation-play-state: running; /* Start animation immediately */
+  }
+  
+  .portfolio-container:hover {
+    animation-play-state: paused; /* Pause scrolling on hover */
+  }
+  
+  .portfolio-item {
+    display: inline-block;
+    margin-right: 10px; /* Space between images */
+    flex-shrink: 0; /* Prevent images from shrinking */
+    height: 100%; /* Make item as tall as the container */
+    position: relative; /* For positioning image */
+  }
+  
+  .portfolio-item img {
+    height: 100%; /* Ensure image fills container height */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure image fits within its container */
+    filter: brightness(30%); /* Dark filter initially */
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .portfolio-item:hover img {
+    filter: brightness(100%); /* Remove dark filter on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

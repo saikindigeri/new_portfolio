@@ -1,0 +1,113 @@
+.header {
+    background-color: #1a1a1a;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar-custom {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes the navbar to the right */
+  }
+  
+  .navbar-custom .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-custom .navbar-toggler-icon {
+    background-color: white; /* Set menu icon color to white */
+    width: 30px; /* Adjust size if needed */
+    height: 3px; /* Adjust size if needed */
+    border-radius: 2px; /* Optional: Rounded corners for better appearance */
+  }
+  
+  .navbar-custom .navbar-toggler-icon::before,
+  .navbar-custom .navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 30px; /* Match width of the main icon */
+    height: 3px; /* Match height of the main icon */
+    background-color: white; /* Set color for the lines */
+    border-radius: 2px; /* Optional: Rounded corners for better appearance */
+  }
+  
+  .navbar-custom .navbar-toggler-icon::before {
+    transform: translateY(-8px); /* Position the top line */
+  }
+  
+  .navbar-custom .navbar-toggler-icon::after {
+    transform: translateY(8px); /* Position the bottom line */
+  }
+  
+  .navbar-custom .navbar-brand {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    height: 100px;
+    letter-spacing: 2px;
+    transition: color 0.3s ease-in-out;
+    margin-right: 20px; /* Space between the brand and navbar */
+    font-family: Arial, sans-serif; /* Set font to Arial */
+  }
+  
+  .navbar-custom .navbar-brand:hover {
+    color: #f8b400;
+    text-shadow: 0 0 10px #f8b400;
+  }
+  
+  .navbar-custom .nav-link {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+    font-family: Arial, sans-serif; /* Set font to Arial */
+  }
+  
+  .navbar-custom .nav-link:hover {
+    color: #f8b400;
+    text-shadow: 0 0 10px #f8b400;
+    transform: scale(1.1);
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #f8b400;
+    text-shadow: 0 0 10px #f8b400;
+  }
+  
+  .navbar-custom .nav-link:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #f8b400;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .navbar-custom .nav-link:hover:after {
+    width: 100%;
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-custom .navbar-nav {
+      text-align: center;
+    }
+  
+    .navbar-custom .nav-link {
+      font-size: 1.5rem;
+      padding: 10px;
+    }
+  }
+  
+
+
+  .logo{
+   color: white;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+  }
