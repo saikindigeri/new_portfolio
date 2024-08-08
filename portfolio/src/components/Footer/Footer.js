@@ -10,16 +10,16 @@ const Footer = () => (
         <p className="footer-text">Feel free to reach out through the following channels:</p>
       </div>
       <div className="footer-links">
-        <a href="mailto:saikumarkindigeri@example.com" className="footer-link">
+        <a href="mailto:saikumardev018@gmail.com" className="footer-link">
           <FaEnvelope size={20} /> Email
         </a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="footer-link">
+        <a href="https://github.com/saikindigeri" target="_blank" rel="noopener noreferrer" className="footer-link">
           <FaGithub size={20} /> GitHub
         </a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="footer-link">
+        <a href="https://linkedin.com/in/saikumarkindigeri" target="_blank" rel="noopener noreferrer" className="footer-link">
           <FaLinkedin size={20} /> LinkedIn
         </a>
-        <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="footer-link">
+        <a href="https://twitter.com/SKindigeri" target="_blank" rel="noopener noreferrer" className="footer-link">
           <FaTwitter size={20} /> Twitter
         </a>
       </div>

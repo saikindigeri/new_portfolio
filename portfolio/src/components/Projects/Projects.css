@@ -11,6 +11,7 @@
     margin-bottom: 20px;
     font-weight: bold;
     text-transform: uppercase;
+    ;
     color: #333;
     position: relative;
     display: inline-block;
@@ -70,7 +71,8 @@
   .project-description {
     font-size: 1.2rem;
     margin: 10px 0;
-    font-style: italic;
+
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   .project-tech {

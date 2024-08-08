@@ -21,70 +21,70 @@
    
     {
         image: 'path/to/image1.jpg',
-        title:"Title 1",
+        title:"Nxtwave Ecommerce",
         description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
+        tech: ['React', 'Node.js', 'Css'],
+        demo: 'https://sainxtcart.ccbp.tech/',
+        github: 'https://github.com/saikindigeri/nxt_trendz_eCommerce.git'
+      },{
+        image: 'path/to/image1.jpg',
+        title:"Jobby App",
+        description: 'Project 1 description',
+        tech: ['React', 'Node.js', 'Css'],
+        demo: 'https://saikumarjobby.ccbp.tech/',
+        github: 'https://github.com/saikindigeri/jobby_app.git'
+      },{
+        image: 'path/to/image1.jpg',
+        title:"NxtWatch",
+        description: 'Project 1 description',
+        tech: ['React', 'Node.js', 'Css'],
+        demo: 'https://saikwatch.ccbp.tech/',
+        github: 'https://github.com/saikindigeri/nxtwatch.git'
+      },{
+        image: 'path/to/image1.jpg',
+        title:"Google Keep",
+        description: 'Project 1 description',
+        tech: ['JavaScript', 'Node.js', 'Bootstrap'],
+        demo: 'https://keep-backend-smoky.vercel.app/',
+        github: 'https://github.com/saikindigeri/keep_backend.git'
+      },{
+        image: 'path/to/image1.jpg',
+        title:"Mahjong Game",
+        description: 'Project 1 description',
+        tech: ['React', 'Css'],
+        demo: 'https://mahajong-game.vercel.app/',
+        github: 'https://github.com/saikindigeri/mahajong-game.git'
+      },{
+        image: 'path/to/image1.jpg',
+        title:"Todo App",
+        description: 'Project 1 description',
+        tech: ['React', 'Node.js', 'Sqlite'],
         demo: 'https://example.com/demo1',
         github: 'https://github.com/example/repo1'
       },{
         image: 'path/to/image1.jpg',
-        title:"Title 1",
+        title:"My Store",
         description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
+        tech: ['React', 'Node.js', 'Sqlite'],
+        demo: 'https://claw-serve.vercel.app/',
+        github: 'https://github.com/saikindigeri/claw_serve.git'
       },{
         image: 'path/to/image1.jpg',
-        title:"Title 1",
+        title:"Finance Manager",
         description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
+        tech: ['React', 'Node.js', 'MySql'],
+        demo: 'https://transassign.netlify.app/',
+        github: 'https://github.com/saikindigeri/finance_manager.git'
       },{
         image: 'path/to/image1.jpg',
-        title:"Title 1",
+        title:"RealEstate App ",
         description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
+        tech: ['React', 'Node.js','Css','Bootstrap'],
+        demo: 'https://totality-frontend-challenge-rust.vercel.app/',
+        github: 'https://github.com/saikindigeri/totality-frontend-challenge.git'
       },{
         image: 'path/to/image1.jpg',
-        title:"Title 1",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
-      },{
-        image: 'path/to/image1.jpg',
-        title:"Title 1",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
-      },{
-        image: 'path/to/image1.jpg',
-        title:"Title 1",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
-      },{
-        image: 'path/to/image1.jpg',
-        title:"Title 1",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
-      },{
-        image: 'path/to/image1.jpg',
-        title:"Title 1",
-        description: 'Project 1 description',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demo: 'https://example.com/demo1',
-        github: 'https://github.com/example/repo1'
-      },{
-        image: 'path/to/image1.jpg',
-        title:"Title 1",
+        title:"Blogs",
         description: 'Project 1 description',
         tech: ['React', 'Node.js', 'MongoDB'],
         demo: 'https://example.com/demo1',
@@ -147,9 +147,9 @@
               <Card className="project-card">
                 <Card.Img variant="top" src={project.image} className="project-image" />
                 <Card.Body>
-                <Card.Text className="project-description">
+                <Card.Header className="project-description">
                     {project.title}
-                  </Card.Text>
+                  </Card.Header>
                   <Card.Text className="project-description">
                     {project.description}
                   </Card.Text>
