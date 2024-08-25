@@ -1,0 +1,43 @@
+.login-page, .register-page, .create-blog-page, .blog-list-page, .blog-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form input, form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.blog-list-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blog-list-page li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.blog-list-page a {
+  text-decoration: none;
+  color: #333;
+}
+
+.blog-page img {
+  max-width: 100%;
+  height: auto;
+}

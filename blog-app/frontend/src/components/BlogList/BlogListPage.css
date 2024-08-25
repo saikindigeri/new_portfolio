@@ -1,0 +1,147 @@
+
+.blog-lists-page {
+    background: #1a1a1a; 
+    color: #e0e0e0;
+    padding: 20px;
+   width: 100vw;
+height: fit-content;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.blog-lists-page .title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    text-align: center;
+    color: #e0e0e0; 
+}
+
+
+.blog-lists-page .error {
+    color: #ff4c4c; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.blog-lists-page .blog-list {
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0; list-style-type: none;
+}
+
+.search-container {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #4fc3f7;
+    box-shadow: 0 0 8px rgba(79, 195, 247, 0.3);
+    outline: none;
+  }
+  
+
+.blog-lists-page .blog-item {
+    background: #151313; 
+    border-radius: 10px;
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blog-lists-page .blog-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+
+.blog-lists-page .blog-content {
+    font-size: 1rem;
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+
+.blog-lists-page .blog-image {
+   width: 60%;
+    height: auto;
+
+    margin-bottom: 10px;
+}
+
+.blog-lists-page .blog-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+.blog-lists-page .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+.blog-lists-page .btn-edit {
+    background: #ff5722;
+    width: 40%;
+}
+
+.blog-lists-page .btn-edit:hover {
+    background: #e64a19;
+    transform: scale(1.05);
+}
+
+
+.blog-lists-page .btn-delete {
+    background: #ff4c4c;
+    width: 40%;
+}
+
+.blog-lists-page .btn-delete:hover {
+    background: #e63c3c;
+    transform: scale(1.05);
+}
+
+
+.blog-lists-page .btn-view {
+    background: #007bff;
+    width: 40%;
+}
+
+.blog-lists-page .btn-view:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.no-blogs{
+    height: 100vh;
+}

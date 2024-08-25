@@ -1,0 +1,92 @@
+
+
+.edit-blog-page {
+    background: #1a1a1a; 
+    color: #e0e0e0; 
+    padding: 40px;
+    border-radius: 10px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    margin-top: 60px ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .edit-blog-page:hover {
+    transform: scale(1.02);
+  }
+  
+  .page-title {
+    
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: #ff4c4c; 
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .form-label {
+    font-size: 1.1rem;
+  }
+  
+  .form-input, .form-textarea {
+   
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-input:focus, .form-textarea:focus {
+    border-color: #ffa500;
+    outline: none;
+  }
+  
+  .form-textarea {
+    resize: vertical;
+   
+    height: 150px;
+  }
+  
+  .submit-button {
+    align-self: center;
+    width: 30%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #007bff;
+    font-size: 1rem;
+    cursor: pointer;
+   
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+  }
+  
