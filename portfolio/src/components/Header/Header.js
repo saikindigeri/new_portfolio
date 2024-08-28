@@ -66,7 +66,7 @@ const Header = () => {
             </Nav.Item>
             <Nav.Item>
               <Link
-                to="Contact"
+                to="Testimonials"
                 smooth={true}
                 duration={1000}
                 className="nav-link"

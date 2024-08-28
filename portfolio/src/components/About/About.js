@@ -20,15 +20,15 @@ const About = () => (
                 </p>
                 <div className="timeline">
                   <div className="timeline-item">
-                    <h5 className="highlight">SSC</h5>
+                    <h5 className="highlight">SSC - 8.8</h5>
                     <p>Telangana Model School, 2017</p>
                   </div>
                   <div className="timeline-item">
-                    <h5 className="highlight">Intermediate</h5>
+                    <h5 className="highlight">Intermediate - 9.1</h5>
                     <p>Telangana Model School and Junior College, 2017-2019</p>
                   </div>
                   <div className="timeline-item">
-                    <h5 className="highlight">BSc MPCS</h5>
+                    <h5 className="highlight">BSc MPCS - 7.9</h5>
                     <p>City College, Hyderabad, 2019-2022</p>
                   </div>
                   <div className="timeline-item">
