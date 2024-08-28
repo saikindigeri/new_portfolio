@@ -1,0 +1,23 @@
+body{
+    background: linear-gradient(135deg, #FF4500, #000000); 
+}
+/* Thin scrollbar styles for WebKit browsers */
+::-webkit-scrollbar {
+    width: 1px; /* Width of the vertical scrollbar */
+    height: 2px; /* Height of the horizontal scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #9f8686; /* Color of the scrollbar handle */
+ /* Rounded corners for the scrollbar handle */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #ffffff; /* Darker color on hover */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+    /* Rounded corners for the track */
+  }
+  

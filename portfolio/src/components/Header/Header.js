@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-scroll';
 import './Header.css';
 
 const Header = () => {
+  const [headerBg, setHeaderBg] = useState('#FF4500'); // Initial background color
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 100) {
+      setHeaderBg('white'); // Change to white when scrolled past 100px
+    } else {
+      setHeaderBg('#FF4500'); // Reset to orange at the top
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="header">
-        <h3  href="#Home" className='logo' >
-           SAI DEVA  </h3>
-      <Navbar expand="lg" className="navbar-custom">
-       
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className='mobile'/>
+    <div className="header" style={{ backgroundColor: headerBg }}>
+      <Link to="Home">
+      <h3 className="logo">SAI DEVA</h3></Link>
+      <div>
+     <Navbar expand="lg" className="navbar-custom">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="mobile" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Item>
-              <Link
-                to="Home"
-                smooth={true}
-                duration={1000}
-                className="nav-link"
-                activeClass="active"
-              >
-                Home
-              </Link>
-            </Nav.Item>
             <Nav.Item>
               <Link
                 to="About"
@@ -32,7 +39,7 @@ const Header = () => {
                 className="nav-link"
                 activeClass="active"
               >
-                About
+                ABOUT
               </Link>
             </Nav.Item>
             <Nav.Item>
@@ -43,7 +50,7 @@ const Header = () => {
                 className="nav-link"
                 activeClass="active"
               >
-                Services
+                SERVICES
               </Link>
             </Nav.Item>
             <Nav.Item>
@@ -54,7 +61,7 @@ const Header = () => {
                 className="nav-link"
                 activeClass="active"
               >
-                Projects
+                PROJECTS
               </Link>
             </Nav.Item>
             <Nav.Item>
@@ -65,13 +72,26 @@ const Header = () => {
                 className="nav-link"
                 activeClass="active"
               >
-                Contact
+                TESTIMONIALS
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link
+                to="Contact"
+                smooth={true}
+                duration={1000}
+                className="nav-link"
+                activeClass="active"
+              >
+                CONTACT
               </Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
-    </header>
+      </Navbar>   
+      </div>
+      
+    </div>
   );
 };
 

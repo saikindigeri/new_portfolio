@@ -1,18 +1,18 @@
 .projects-section {
     padding: 50px 0;
     text-align: center;
-    background-color: #f0f9ff; /* Light sky blue background */
+
     position: relative;
     overflow: hidden;
   }
   
   .projects-title {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 25px;
+    margin-bottom: 30px;
     font-weight: bold;
+    color: rgb(255, 255, 255);
     text-transform: uppercase;
-    ;
-    color: #333;
+    letter-spacing: 2px;
     position: relative;
     display: inline-block;
     animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;

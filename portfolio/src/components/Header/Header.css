@@ -1,113 +1,68 @@
+/* Header.css */
 .header {
-    background-color: #1a1a1a;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    transition: background-color 0.3s ease-in-out;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  .navbar-custom {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Pushes the navbar to the right */
-  }
-  
-  .navbar-custom .navbar-toggler {
-    border: none;
-  }
-  
-  .navbar-custom .navbar-toggler-icon {
-    background-color: white; /* Set menu icon color to white */
-    width: 30px; /* Adjust size if needed */
-    height: 3px; /* Adjust size if needed */
-    border-radius: 2px; /* Optional: Rounded corners for better appearance */
-  }
-  
-  .navbar-custom .navbar-toggler-icon::before,
-  .navbar-custom .navbar-toggler-icon::after {
-    content: '';
-    display: block;
-    width: 30px; /* Match width of the main icon */
-    height: 3px; /* Match height of the main icon */
-    background-color: white; /* Set color for the lines */
-    border-radius: 2px; /* Optional: Rounded corners for better appearance */
-  }
-  
-  .navbar-custom .navbar-toggler-icon::before {
-    transform: translateY(-8px); /* Position the top line */
-  }
-  
-  .navbar-custom .navbar-toggler-icon::after {
-    transform: translateY(8px); /* Position the bottom line */
-  }
-  
-  .navbar-custom .navbar-brand {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-    height: 100px;
-    letter-spacing: 2px;
-    transition: color 0.3s ease-in-out;
-    margin-right: 20px; /* Space between the brand and navbar */
-    font-family: Arial, sans-serif; /* Set font to Arial */
-  }
-  
-  .navbar-custom .navbar-brand:hover {
-    color: #f8b400;
-    text-shadow: 0 0 10px #f8b400;
-  }
-  
-  .navbar-custom .nav-link {
-    color: #fff;
-    font-size: 1.2rem;
-    margin: 0 10px;
-    transition: color 0.3s ease-in-out;
-    font-family: Arial, sans-serif; /* Set font to Arial */
-  }
-  
-  .navbar-custom .nav-link:hover {
-    color: #f8b400;
-    text-shadow: 0 0 10px #f8b400;
-    transform: scale(1.1);
-  }
-  
-  .navbar-custom .nav-link.active {
-    color: #f8b400;
-    text-shadow: 0 0 10px #f8b400;
-  }
-  
-  .navbar-custom .nav-link:after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #f8b400;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .navbar-custom .nav-link:hover:after {
-    width: 100%;
-  }
-  
-  @media (max-width: 992px) {
-    .navbar-custom .navbar-nav {
-      text-align: center;
-    }
-  
-    .navbar-custom .nav-link {
-      font-size: 1.5rem;
-      padding: 10px;
-    }
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* Ensure the header stays on top */
+}
 
-  .logo{
-   color: white;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-  }
+.logo {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: 'Courier New', Courier, monospace; /* Custom font style for logo */
+  transition: color 0.3s ease;
+}
+
+.navbar-custom {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  position: relative;
+  color: rgb(0, 0, 0);
+  margin: 0 15px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  overflow: hidden; /* Ensure the background does not overflow */
+  transition: color 0.3s ease;
+}
+.nav-link:hover{
+  color: white;
+}
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  height: 100%;
+  background-color: rgba(214, 65, 65, 0.918); /* Subtle initial background color */
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1; /* Place behind the text */
+}
+
+.nav-link:hover::before {
+  background-color: #10c4a0; /* Background color on hover */
+  transform: scaleX(1);
+  color: white; /* Expand background color */
+}
+
+.nav-link.active {
+  color: #FF4500; /* Active link color */
+}

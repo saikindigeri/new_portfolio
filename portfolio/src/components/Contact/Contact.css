@@ -1,6 +1,6 @@
 .contact-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #ffccbc, #ffebee);
+
     position: relative;
     overflow: hidden;
   }
@@ -12,11 +12,12 @@
   }
   
   .contact-title {
-    font-size: 3rem;
+    font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
+    color: rgb(255, 255, 255);
     text-transform: uppercase;
-    color: #333;
+    letter-spacing: 2px;
     position: relative;
     display: inline-block;
     animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
@@ -203,91 +204,25 @@
     }
   }
 
+/* Contact.css */
+.success-alert {
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  right: 50%;
+  transform: translateX(50%);
+  transition: opacity 0.5s ease-in-out;
+}
 
-  /* Modal container styling */
-.thank-you-modal .modal-dialog {
-    animation: zoomIn 0.5s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  /* Modal content styling */
-  .thank-you-modal .modal-content {
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    animation: fadeInUp 0.5s ease-in-out;
-  }
-  
-  /* Modal header styling */
-  .thank-you-modal .modal-header {
-    font-family: Arial, Helvetica, sans-serif;
-    border-bottom: none;
-    background: rgba(255, 255, 255, 0.8);
-    animation: slideIn 0.5s ease-in-out;
-  }
-  
-  /* Modal body styling */
-  .thank-you-modal .modal-body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    color: #fff;
-    text-align: center;
-  }
-  
-  /* Modal footer styling */
-  .thank-you-modal .modal-footer {
-    font-family: Arial, Helvetica, sans-serif;
-    border-top: none;
-    background: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Button styling */
-  .thank-you-modal .btn-secondary {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f8b400;
-    border: none;
-    color: #fff;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  
-  .thank-you-modal .btn-secondary:hover {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: darkblue;
-    transform: scale(1.05);
-  }
-  
-  /* Animation keyframes */
-  @keyframes zoomIn {
-    from {
-      opacity: 0;
-      transform: scale(0.7);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+.success-alert .alert-success {
+  background-color: #28a745; /* Green background */
+  color: white;
+  border: none;
+}
+
+.success-alert .alert-success .close {
+  color: white;
+}

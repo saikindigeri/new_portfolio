@@ -3,10 +3,12 @@ import { Form, Button, Modal, Alert } from 'react-bootstrap';
 import { GrSend } from "react-icons/gr";
 import './Contact.css';
 
+
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
@@ -35,6 +37,8 @@ const Contact = () => {
         setMessage('');
         setSuccess('Thank you for reaching out! I will get back to you soon.');
         setError('');
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 7000); // Hide alert after 4 seconds
         setShowModal(true);
       } else {
         setError('Submission failed. Please try again.');
@@ -93,31 +97,18 @@ const Contact = () => {
             />
           </Form.Group>
           {error && <Alert variant="danger" className="error-alert">{error}</Alert>}
-          {success && <Alert variant="success" className="success-alert">{success}</Alert>}
+          {success && showAlert && (
+            <Alert variant="success" className="success-alert">
+              {success}
+            </Alert>
+          )}
           <Button variant="primary" type="submit" className="submit-button">
            <GrSend size={30}/>
           </Button>
         </Form>
 
-        {/* Modal for Thank You message */}
-        <Modal
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          centered
-          className="thank-you-modal"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Thank You!</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>{success}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+      
+
       </div>
     </section>
   );

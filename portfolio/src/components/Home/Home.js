@@ -1,33 +1,21 @@
 import React from 'react';
 import './Home.css';
-import { Button } from 'react-bootstrap';
-import { FaArrowDown } from 'react-icons/fa';
-import { Link } from 'react-scroll';
+import resume from '../../assets/Resume.pdf';
+const profileImage = 'https://res.cloudinary.com/dyjmh036b/image/upload/v1724694358/WhatsApp_Image_2024-08-08_at_8.11.51_PM_tpbzls.png';
 
 const Home = () => (
-  <section id="Home" className="home-section text-center">
-     <h1 className="home-title ">Welcome to My Portfolio</h1>
-    <div className="home-content text-center">
-     
-      <h1 className="home-subtitle">I'm Sai Kumar Kindigeri, a Creative Web Developer</h1>
-      <p className="home-description">
-        With a strong passion for web development, I specialize in building interactive <br /> and responsive web applications.
-        My journey spans across technologies like React, <br />Node.js, and more, crafting solutions that bring ideas to life.
-        Let's create something extraordinary together.
-      </p>
-      <Button variant="primary" href="#Contact" className="home-button">
-        Connect with Me
-      </Button>
-     
-       
-        <Link 
-          to="About" 
-          smooth={true} 
-          duration={1000} 
-          className="scroll-down"
-        >
-          <FaArrowDown size={30} />
-        </Link>
+  <section id="Home" className="home-section">
+    <div className="home-content">
+      <div className="text-content">
+        <h1 className="home-title">Hi, I'm Sai Kumar</h1>
+        <h2 className="home-subtitle">A Passionate Web Developer</h2>
+        <p className="home-description">
+          Crafting modern, interactive, and responsive web applications <br /> to bring your ideas to life.
+        </p>
+        <a href="#Contact" className="home-button">Connect with Me</a>
+        <a href={resume} className="resume-button" download="Sai_Kumar_Resume.pdf">Download Resume</a>
+      </div>
+      <img src={profileImage} alt="Sai Kumar" className="profile-photo" />
     </div>
   </section>
 );

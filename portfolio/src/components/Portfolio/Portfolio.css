@@ -1,6 +1,6 @@
 .portfolio {
     padding: 40px 20px;
-    background-color: #f4f4f4;
+
     overflow: hidden; /* Hide overflow to keep the layout clean */
     position: relative;
     height: 500px; /* Adjust height as needed */

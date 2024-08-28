@@ -7,7 +7,7 @@ import './Services.css';
 
 const Services = () => (
   <section id="Services" className="services-section">
-    <Container>
+    <Container fluid>
       <h1 className="services-title">My Services</h1>
       <Row>
         <Col md={3} className="mb-4">

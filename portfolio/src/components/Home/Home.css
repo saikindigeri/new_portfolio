@@ -1,124 +1,200 @@
+/* Home.css */
 .home-section {
-    background-color: skyblue; /* Update background color */
-    padding: 100px 0;
-    transition: background-color 0.5s ease;
-  }
-  
-  .home-content {
-    max-width: 800px;
-    margin: 0 auto;
-    color: #fff;
-    background-color: lightcyan;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .home-content:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .home-title {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    font-weight: bold;
-    color: #00796b;
-    display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    position: relative;
-    animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
-    
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow: hidden;
+}
 
-  .home-title::after{
-    content: '';
-    display: block;
-    width: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 3px;
-    background: #00796b;
-    margin: 10px auto;
-    transition: width 0.3s ease;
-    animation: lineExpand 1s ease-in-out;
-  }
+.home-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
 
-  
-  .home-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #00796b;
-  }
-  
-  .home-description {
-    color: #00796b;
-    font-size: 1.2rem;
-    font-family: Arial, Helvetica, sans-serif;
+.text-content {
+  flex: 1;
+  animation: fadeInLeft 1.5s ease-out;
+}
 
-    margin-bottom: 40px;
-  }
-  
-  .home-button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
- 
+.home-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease-out;
+}
 
-    margin-right: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-family: Arial, Helvetica, sans-serif;
+.home-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  margin-bottom: 20px;
+  animation: fadeInDown 1.2s ease-out;
+}
 
+.home-description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  margin-bottom: 30px;
+
+  animation: fadeInDown 1.4s ease-out;
+}
+
+.home-button, .resume-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #5616bd;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.resume-button {
+  background-color: #9d3a24;
+}
+
+.resume-button:hover{
+  background-color: black;
+}
+
+.home-button:hover{
+  background-color: #007bff;
+}
+.profile-photo {
+  flex: 1;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: fadeInRight 1.5s ease-out;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes fadeInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
   }
-  
-  .home-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+  100% {
+      opacity: 1;
+      transform: translateX(0);
   }
-  
-  .scroll-down {
-    display: block;
-    margin-top: 20px;
-    color:rgb(19, 19, 125);
-    transition: color 0.3s ease;
+}
+
+@keyframes fadeInRight {
+  0% {
+      opacity: 0;
+      transform: scale(0.8); /* Scale down to give a popping effect */
   }
-  
-  .scroll-down:hover {
-    color: #185089;
+  100% {
+      opacity: 1;
+      transform: scale(1); /* Scale up to normal size */
   }
-  
-  .scroll-down {
-    display: inline-block;
-    margin-top: 30px; /* Position the scroll button below the main button */
-    color: #fff;
-    animation: bounce 2s infinite;
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
   }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+  100% {
+      opacity: 1;
       transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
   }
-  
+}
 
-  @keyframes pulseAnimation {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
   }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.profile-photo {
+  flex: 1;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: profileImageAnimation 4s ease-in-out infinite; /* Animation added */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
+}
+
+@keyframes profileImageAnimation {
+  0% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+      opacity: 0;
+      transform: scale(0.8); /* Scale down to give a popping effect */
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1); /* Scale up to normal size */
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
