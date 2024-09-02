@@ -1,0 +1,200 @@
+/* Home.css */
+.home-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.home-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.text-content {
+  flex: 1;
+  animation: fadeInLeft 1.5s ease-out;
+}
+
+.home-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.home-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  margin-bottom: 20px;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+.home-description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  margin-bottom: 30px;
+
+  animation: fadeInDown 1.4s ease-out;
+}
+
+.home-button, .resume-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #5616bd;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.resume-button {
+  background-color: #9d3a24;
+}
+
+.resume-button:hover{
+  background-color: black;
+}
+
+.home-button:hover{
+  background-color: #007bff;
+}
+.profile-photo {
+  flex: 1;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: fadeInRight 1.5s ease-out;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes fadeInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+      opacity: 0;
+      transform: scale(0.8); /* Scale down to give a popping effect */
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1); /* Scale up to normal size */
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.profile-photo {
+  flex: 1;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: profileImageAnimation 4s ease-in-out infinite; /* Animation added */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
+}
+
+@keyframes profileImageAnimation {
+  0% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+      opacity: 0;
+      transform: scale(0.8); /* Scale down to give a popping effect */
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1); /* Scale up to normal size */
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

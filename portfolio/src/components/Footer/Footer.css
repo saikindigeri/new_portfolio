@@ -1,0 +1,118 @@
+.footer-section {
+
+    color: #dfdfdf;
+    padding: 20px 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .footer-content {
+   color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .footer-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
+  }
+  
+  @keyframes titleAnimation {
+    0% {
+      color: #fff;
+      transform: scale(1);
+    }
+    50% {
+      color: #f8f9fa;
+      transform: scale(1.1);
+    }
+    100% {
+      color: #fff;
+      transform: scale(1);
+    }
+  }
+  
+  .footer-text {
+    font-size:15px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 15px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 15px;
+    color: white;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+    position: relative;
+    padding: 5px;
+  }
+  
+  .footer-link::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #dbdbdb;
+    bottom: 0;
+    color: #f8f9fa;
+    left: 0;
+    transition: width 0.3s;
+  }
+  
+  .footer-link:hover::before {
+    width: 100%;
+  }
+  
+  .footer-link:hover {
+    color: #ffffff;
+    transform: translateY(-5px) scale(1.1);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 10px;
+    font-size: 15px;
+    animation: bottomAnimation 2s ease-in-out;
+  }
+  
+  @keyframes bottomAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

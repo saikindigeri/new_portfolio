@@ -1,0 +1,179 @@
+.services-section {
+height: 100vh;
+
+    padding: 60px 0;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Center align text */
+   
+  }
+  
+  .services-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+ 
+    color: rgb(244, 244, 244);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
+    
+  }
+  
+  .services-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 3px;
+    background: #00796b;
+    margin: 10px auto;
+    transition: width 0.3s ease;
+    animation: lineExpand 1s ease-in-out;
+  }
+  
+  .service-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scaleIn 0.6s ease-in-out;
+  }
+
+  .service-card p{
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+  
+   /* Custom font style for logo */
+  }
+  
+  .service-card:hover {
+    background-color: #c9c9c9;
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(255, 36, 36, 0.762);
+  }
+  
+  .service-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    animation: iconAnimate 0.6s ease-in-out;
+  }
+  
+  .service-card:hover .service-icon {
+    transform: scale(1.2);
+    color: #c62121;
+  }
+  
+  .service-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #000000;
+
+    font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+    font-family: 'Courier New', Courier, monospace; /* Custom font style for logo */
+    animation: fadeInTitle 1s ease-in-out;
+  }
+  
+  .service-card p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .service-card:hover p {
+    color: #000000;
+    transform: translateY(-5px);
+  }
+  
+  @keyframes backgroundAnimation {
+    0% {
+      background: linear-gradient(135deg, #000000, #1e6a74);
+    }
+    100% {
+      background: linear-gradient(135deg, #1d0909, #02090a);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes titleAnimate {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes lineExpand {
+    from {
+      width: 0;
+    }
+    to {
+      width: 80px;
+    }
+  }
+  
+  @keyframes iconAnimate {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeInTitle {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Center align cards within the row */
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .col-md-3 {
+    display: flex;
+    justify-content: center;
+  }
+  @keyframes pulseAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

@@ -1,0 +1,68 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* Ensure the header stays on top */
+}
+
+.logo {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: 'Courier New', Courier, monospace; /* Custom font style for logo */
+  transition: color 0.3s ease;
+}
+
+.navbar-custom {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  position: relative;
+  color: rgb(0, 0, 0);
+  margin: 0 15px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  overflow: hidden; /* Ensure the background does not overflow */
+  transition: color 0.3s ease;
+}
+.nav-link:hover{
+  color: white;
+}
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  height: 100%;
+  background-color: rgba(214, 65, 65, 0.918); /* Subtle initial background color */
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1; /* Place behind the text */
+}
+
+.nav-link:hover::before {
+  background-color: #10c4a0; /* Background color on hover */
+  transform: scaleX(1);
+  color: white; /* Expand background color */
+}
+
+.nav-link.active {
+  color: #FF4500; /* Active link color */
+}

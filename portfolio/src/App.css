@@ -1,0 +1,8 @@
+body{
+  background: linear-gradient(135deg, #170903, #000000); 
+  /* Hide scrollbar for the entire page */
+
+  overflow-y: hidden; /* Hides the vertical scrollbar */
+
+
+}

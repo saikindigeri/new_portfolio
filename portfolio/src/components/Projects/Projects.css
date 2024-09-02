@@ -1,0 +1,122 @@
+.projects-section {
+    padding: 50px 0;
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .projects-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 2s ease-out, pulseAnimation 2s infinite;
+  }
+  
+  .projects-title::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #17a2b8;
+    margin: 10px auto;
+  }
+  
+  .projects-container {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden; /* Hide scrollbar */
+    white-space: nowrap;
+    position: relative;
+    padding: 10px 0;
+  }
+  
+  .project-card-wrapper {
+    display: inline-block;
+    margin-right: 20px;
+    transform: rotate(-3deg); /* Slant effect */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .project-card-wrapper:hover {
+    transform: rotate(0deg); /* Remove slant on hover */
+  }
+  
+  .project-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 400px;
+    border-radius: 10px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .project-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .project-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .project-description {
+    font-size:15px;
+    margin: 10px 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+
+  .project-des {
+    font-size:20px;
+    margin: 10px 0;
+background-color: rgb(0, 78, 74);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .project-tech {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .project-buttons {
+    margin-top: 10px;
+  }
+  
+  .project-buttons .btn {
+    margin: 0 5px;
+  }
+  .tech-icon{
+    margin-right: 20px;
+  }
+  /* Hide the scrollbar for all browsers */
+  .projects-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .projects-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  @keyframes pulseAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
